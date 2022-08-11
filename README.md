@@ -1,9 +1,11 @@
-# Projektdokumentation WebShop
-## Delia Melanie Joel
+# Projektdokumentation codelineway
+### By Delia Melanie Joel
+
+![Ein Bild, das Text, Uhr enthält. Automatisch generierte Beschreibung](media/1d84510f231a5cf16077b15511cff6c6.png)
 
 | **Datum**  | **Version** | **Änderung** | **Autor** |
 |------------|-------------|--------------|-----------|
-| 11.08.2022 | 0.1         | Inital I P E |           |
+| 11.08.2022 | 0.1         | Inital I P E | Joel      |
 | 18.08.2022 | 0.2         |              |           |
 | 25.08.2022 | 0.3         |              |           |
 | 1.09.2022  | 0.4         |              |           |
@@ -16,10 +18,8 @@
 
 ## Projekt
 
-WebShop Schmhopping / Over The Shop
-
 Wir wollen einen Webshop realisieren. Man soll sich Registrieren und Anmelden können.   
-Auch soll es möglich sein, etwas zu Bestellen.
+Auch soll es möglich sein, etwas zu Bestellen. Im Shop soll man ganz verschiedene Dinge «kaufen» können.
 
 ## Quellen
 
@@ -32,7 +32,7 @@ Auch soll es möglich sein, etwas zu Bestellen.
 | 3          | Kann             | Qualität                        | Es gibt eine Password Policy.                                                                  |
 | 4          | Muss             | Funktional                      | Es kann nach Produkten gesucht werden.                                                         |
 | 5          | Muss             | Funktional                      | Alle Produkte, die der Suche entsprechen, werden angezeigt.                                    |
-| 6          | Muss             | Qualität                        | Die Produkte werden in einer 4 Spaltigen Tabelle angezeigt, von links nach rechts aufgefüllt.  |
+| 6          | Kann             | Qualität                        | Die Produkte werden in einer 4 Spaltigen Tabelle angezeigt, von links nach rechts aufgefüllt.  |
 | 7          | Kann             | Qualität                        | Produkte haben einen Namen                                                                     |
 | 8          | Kann             | Qualität                        | Produkte haben einen Preis                                                                     |
 | 9          | Kann             | Qualität                        | Produkte haben eine Beschreibung                                                               |
@@ -53,28 +53,50 @@ Auch soll es möglich sein, etwas zu Bestellen.
 | 24         | Muss             | Rand                            | OneDrive wird als Speicherort verwendet.                                                       |
 | 25         | Muss             | Rand                            | Das Projekt muss bis am 29.09.2022 fertig sein.                                                |
 
-## 1.4 Diagramme
+## Diagramme
 
-TBA
+![](media/694172a14d9bafa4f9ccc2c15f5d5c4c.png)
+
+1: Sitemap
+
+![](media/4e9e8c39cc25b782d78c8a6700bd4d32.png)
+
+2: Use Case Diagramm
 
 #  Planen
 
-| **Nummer** | **Frist** | **Beschreibung** | **Zeit (geplant)** | **Zeit (effektiv)** |
-|------------|-----------|------------------|--------------------|---------------------|
-| 1.1        |           |                  |                    |                     |
-| 1.2        |           |                  |                    |                     |
-| 1.3        |           |                  |                    |                     |
-| 1.4        |           |                  |                    |                     |
-| 2.1        |           |                  |                    |                     |
-| 2.2        |           |                  |                    |                     |
-| 3.1        |           |                  |                    |                     |
+| **Nummer** | **Frist**  | **Beschreibung**                                                                       | **Zeit (geplant)** | **Zeit (effektiv)** |
+|------------|------------|----------------------------------------------------------------------------------------|--------------------|---------------------|
+| 1.1        | 11.08.2022 | Informieren über Datenbankanbindung und Suchsystem des Webshops.                       | 45                 |                     |
+| 1.2        | 11.08.2022 | Planung fertig schreiben                                                               | 45                 | 60                  |
+| 1.3        | 11.08.2022 | Dokumentation bis E beenden                                                            | 45                 | 30                  |
+| 2.1        | 18.08.2022 | Mock Up erstellen: Main Page Joel Item Page Delia  Check-out / Anmelden Melanie        | 45                 |                     |
+| 2.2        | 18.08.2022 | Coden des HTML Gerüstes:  Main Page Joel Item Page Delia Check-out / Anmelden Melanie  | 90                 |                     |
+| 2.3        | 18.08.2022 | Coden des HTML Gerüstes für den Warenkorb (mit Hover auf Main Page)                    | 45                 |                     |
+| 3.1        | 25.08.2022 | Logik (Datenbank) hinter Anmeldung und Registrierung implementieren                    | 90                 |                     |
+| 3.2        | 25.08.2022 | Password Policy gestalten und Implementieren                                           | 90                 |                     |
+| 4.1        | 1.09.2022  | Item Pages mit Main Page verknüpfen                                                    | 45                 |                     |
+| 4.2        | 1.09.2022  | Item Page mit Informationen füllen                                                     | 90                 |                     |
+| 4.3        | 1.09.2022  | Reserve                                                                                | 45                 |                     |
+| 5.1        | 8.09.2022  | Implementation der Logik des Checks-outs                                               | 90                 |                     |
+| 5.2        | 8.09.2022  | Automatisch generierte E-Mail implementieren                                           | 90                 |                     |
+| 6.1        | 15.09.2022 | Warenkorb Logik                                                                        | 90                 |                     |
+| 6.2        | 15.09.2022 | Warenkorb Bedienung                                                                    | 90                 |                     |
+| 7.1        | 22.09.2022 | Reserve                                                                                | 225                |                     |
+| 8          | 29.09.2022 | Portfolio Schreiben                                                                    | 90                 |                     |
 
 #  Entscheiden
 
-Wie wird die Password Policy gestaltet?
+### Was für einen Namen nehmen wir für unseren Shop?   
+Wir haben uns für codelineway entschieden. Über eine Namensgenerierung-Webpage haben wird diesen Namen gefunden.
+
+### Wie wird die Password Policy gestaltet?   
+Die Passwörter sollen mindestens 8 Zeichen beinhalten, darunter mindestens eine Zahl und mindestens einen Buchstaben.
+
+### Was für einen Shop machen wir?  
+Einen Code Shop. Man kann sich Code «kaufen», welcher man danach per E-Mail zugesendet bekommt.
 
 #  Realisieren
-
 #  Kontrollieren
 
 ## Testfälle
@@ -90,9 +112,9 @@ Wie wird die Password Policy gestaltet?
 
 | **Nummer** | **Datum** | **Resultat** | **Durchgeführt** |
 |------------|-----------|--------------|------------------|
-| **1.1.1**  |           |              | Flynn Guerra     |
-| **2.1.1**  |           |              | Flynn Guerra     |
-| **3.1.1**  |           |              | Flynn Guerra     |
-| **4.1.1**  |           |              | Flynn Guerra     |
+| **1.1.1**  |           |              |                  |
+| **2.1.1**  |           |              |                  |
+| **3.1.1**  |           |              |                  |
+| **4.1.1**  |           |              |                  |
 
 #  Auswerten
