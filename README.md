@@ -1,7 +1,7 @@
 # Projektdokumentation codelineway
 ### By Delia Melanie Joel
 
-![Ein Bild, das Text, Uhr enthält. Automatisch generierte Beschreibung](media/1d84510f231a5cf16077b15511cff6c6.png)
+![Logo unseres Webshops](codelinewayLogoOnlyClear.png)
 
 | **Datum**  | **Version** | **Änderung** | **Autor** |
 |------------|-------------|--------------|-----------|
@@ -52,16 +52,6 @@ Auch soll es möglich sein, etwas zu Bestellen. Im Shop soll man ganz verschiede
 | 23         | Muss             | Rand                            | GitHub Pages wird zum Hosten und Dokumentieren verwendet.                                      |
 | 24         | Muss             | Rand                            | OneDrive wird als Speicherort verwendet.                                                       |
 | 25         | Muss             | Rand                            | Das Projekt muss bis am 29.09.2022 fertig sein.                                                |
-
-## Diagramme
-
-![](media/694172a14d9bafa4f9ccc2c15f5d5c4c.png)
-
-1: Sitemap
-
-![](media/4e9e8c39cc25b782d78c8a6700bd4d32.png)
-
-2: Use Case Diagramm
 
 #  Planen
 
