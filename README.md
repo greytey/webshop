@@ -1,6 +1,5 @@
-Projektdokumentation WebShop
-
-Delia Melanie Joel
+# Projektdokumentation WebShop
+### Delia Melanie Joel
 
 | **Datum**  | **Version** | **Änderung** | **Autor** |
 |------------|-------------|--------------|-----------|
