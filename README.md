@@ -54,7 +54,7 @@ Auch soll es möglich sein, etwas zu Bestellen.
 
 TBA
 
-1.  Planen
+#  Planen
 
 | **Nummer** | **Frist** | **Beschreibung** | **Zeit (geplant)** | **Zeit (effektiv)** |
 |------------|-----------|------------------|--------------------|---------------------|
@@ -66,13 +66,13 @@ TBA
 | 2.2        |           |                  |                    |                     |
 | 3.1        |           |                  |                    |                     |
 
-1.  Entscheiden
+#  Entscheiden
 
 Wie wird die Password Policy gestaltet?
 
-1.  Realisieren
-1.  Kontrollieren
+#  Realisieren
 
+# Kontrollieren
 ## Testfälle
 
 | **Nummer** | **Voraussetzung** | **Eingabe** | **Erwartete Ausgabe** |
@@ -91,4 +91,4 @@ Wie wird die Password Policy gestaltet?
 | **3.1.1**  |           |              | Flynn Guerra     |
 | **4.1.1**  |           |              | Flynn Guerra     |
 
-1.  Auswerten
+#  Auswerten
