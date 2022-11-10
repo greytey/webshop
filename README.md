@@ -1,17 +1,78 @@
-# Projektdokumentation codelineway Sequel
+**P ![](RackMultipart20221110-1-ynjch5_html_d74744e49d7203f2.png) rojektdokumentation codelineway**
+
+Sequel
 
 By Delia Reho, Melanie Völlmin & Joel Jütte
 
-![Logo](codelinewayLogoOnlyClear.png)
+![](RackMultipart20221110-1-ynjch5_html_1ae6c12c6995fb46.png)
 
 | **Datum** | **Version** | **Änderung** | **Autor** |
 | --- | --- | --- | --- |
-| 03.11.2022 | 1.1 | Initial I P E from Sequel | Joel Jütte |
-| 10.11.2022 ||||
+| 03.11.2022 | 1.1 | Initial I P E | Joel Jütte |
+| 10.11.2022 |
+ |
+ |
+ |
+| 17.11.2022 |
+ |
+ |
+ |
+| 24.11.2022 |
+ |
+ |
+ |
+| 01.12.2022 |
+ |
+ |
+ |
+| 08.12.2022 |
+ |
+ |
+ |
+| 15.12.2022 |
+ |
+ |
+ |
 
-## 1. Informieren
+# Inhaltsverzeichnis
 
-### 1.1 Projekt
+[Inhaltsverzeichnis 1](#_Toc118360321)
+
+[1.Informieren 2](#_Toc118360322)
+
+[1.1Projekt 2](#_Toc118360323)
+
+[1.2Quellen 2](#_Toc118360324)
+
+[1.3Anforderungen 3](#_Toc118360325)
+
+[1.4Diagramme 4](#_Toc118360326)
+
+[2.Planen 4](#_Toc118360327)
+
+[2.1Arbeitspakete/To-Do 4](#_Toc118360328)
+
+[2.2Milestones 4](#_Toc118360329)
+
+[3.Entscheiden 5](#_Toc118360330)
+
+[4.Realisieren 6](#_Toc118360331)
+
+[5.Kontrollieren 6](#_Toc118360332)
+
+[5.1Testfälle 7](#_Toc118360333)
+
+[5.2Testprotokoll 7](#_Toc118360334)
+
+[5.3Testfazit 7](#_Toc118360335)
+
+[6.Auswerten 7](#_Toc118360336)
+
+1.
+# Informieren
+
+  1.
+## Projekt
 
 Wir wollen unseren Webshop erweitern. Dabei möchten wir gerne die Registrierung und Anmeldung vom letzten Mal fertig realisieren. Die Benutzer sollen Kommentare zu den Produkten hinterlassen können. Ebenfalls soll die Adresse beim ersten Check-Out in der Datenbank gespeichert werden und ab dort automatisch ausgefüllt werden. Der Webshop soll gehostet werden, wobei auf die Sicherheit der Daten geachtet werden muss. Eventuelle weitere Features/Erweiterungen wären:
 
@@ -29,7 +90,8 @@ Im **Leistungsziel 22** geht es darum, Eingaben zu validieren und Codemanipulati
 
 Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabei vielleicht vorsichtig sein muss. Daten müssen beim Sessionhandling vorübergehend gespeichert werden. Dabei muss man aufpassen, wo und wie die Daten gespeichert werden, um die Sicherheit der Daten zu gewähren. Wir machen uns Gedanken dazu, wie diese Daten zwischengespeichert werden, insofern wir Gebrauch von Sessions machen.
 
-### 1.2 Quellen
+  1.
+## Quellen
 
 - [CSS costum properties (variables)](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
 - [Spring Applikation ausführen](https://www.jetbrains.com/help/idea/your-first-spring-application.html#run-spring-application)
@@ -41,8 +103,10 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 - [Textarea verändert Grösse nach Inhalt](https://stackoverflow.com/questions/454202/creating-a-textarea-with-auto-resize)
 - [Bootstrap Form](https://getbootstrap.com/docs/4.0/components/forms/?)
 - jQuery zu [Springboot](https://www.codejava.net/frameworks/spring-boot/add-bootstrap-and-jquery-in-a-spring-boot-project) hinzufügen
+- [Test ob String eine Nummer enthält](https://www.tutorialspoint.com/Check-if-a-string-contains-a-number-using-Java#:~:text=To%20find%20whether%20a%20given,method%20of%20the%20Character%20class.)
 
-### 1.3 Anforderungen
+  1.
+## Anforderungen
 
 | **Nummer** | **Muss / Kann?** | **Funktional? Qualität? Rand?** | **Beschreibung** |
 | --- | --- | --- | --- |
@@ -68,11 +132,14 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 | 20 | Muss | Rand | Die Datenbank für die Webapplikation wird online gehostet, so dass alle Mitentwickler damit arbeiten können. |
 | 21 | Muss | Rand | Das Projekt muss bis am 15.12.2022 fertig sein. |
 
-### 1.4 Diagramme
+  1.
+## Diagramme
 
-## 2. Planen
+1.
+# Planen
 
-### 2.1 Arbeitspakete/To-Do
+  1.
+## Arbeitspakete/To-Do
 
 | **Nr.** | **Frist** | **Beschreibung** | **Person** | **Zeit (geplant)** | **Zeit (effektiv)** |
 | --- | --- | --- | --- | --- | --- |
@@ -83,27 +150,74 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 | 1.5 | 03.11.2022 | Informieren wie man JavaScript (jQuery) mit Springboot verwendet. jQuery für die Login Seite schreiben. | Joel | 45 | 25 |
 | 1.6 | 03.11.2022 | GUI des Kommentarbereichs entwerfen | Delia | 45 | 30 |
 | 1.7 | 03.11.2022 | GUI des Kommentarbereichs implementieren | Delia | 45 | 60 |
-| 1.8 | 03.11.2022 | Dokumentation fertigstellen und gemeinsam mit aktuellen Projektstand auf einem neuen Github-Repository hochladen | Alle | 45 ||
-| 2.1 | 10.11.2022 | Wöchentliches HDKOM\* | Alle | 22 ||
-| 2.2 | 10.11.2022 | Login mit Datenbank verbinden | Joel | 45 ||
-| 2.3 | 10.11.2022 | Validierung von Eingabe und Password Policy Implementieren | Joel | 45 ||
-| 2.4 | 10.11.2022 | Login Filter implementieren | Joel | 90 ||
-| 2.4 | 10.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 ||
+| 1.8 | 03.11.202210.11.2022 | Dokumentation fertigstellen und gemeinsam mit aktuellen Projektstand auf dem bereits vorhandenen GitHub-Repository hochladen | Alle | 45 | 20 |
+|
+ |
+| 2.1 | 10.11.2022 | Wöchentliches HDKOM\* | Alle | 22 | 30 |
+| 2.2 | 10.11.2022 | Login mit Datenbank verbinden | Joel | 45 | 55 |
+| 2.3 | 10.11.2022 | Validierung von Eingabe und Password Policy Implementieren | Joel | 45 | 55 |
+| 2.4 | 10.11.202217.11.2022 | Login auf der Webpage implementieren | Joel | 90 | 45 |
+| 2.5 | 10.11.2022 | GUI des Kommentarbereichs fertigstellen | Delia | 90 | 30 |
+| 2.6 | 10.11.202217.11.2022 | Funktionalität des Kommentarbereichs umsetzen
+ | Delia | 90 | 120 |
+| 2.7 | 10.11.2022 | Warenkorb-Feature «entfernen» hinzufügen | Melanie | 45 | 60 |
+| 2.8 | 10.11.2022 | Check-Out Formular anpassen/ Pflichtcheckbox hinzufügen | Melanie | 45 | 25 |
+| 2.9 | 10.11.202217.11.2022 | Autofill Check-Out Formular vorbereiten | Melanie | 45 | 20+? |
+| 2.10 | 10.11.2022 | Reserve | Melanie | 45 | 75\*\* |
+| 2.11 | 10.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 | 20 |
+|
+ |
+| 3.1 | 17.11.2022 | Wöchentliches HDKOM\* | Alle | 22 |
+ |
+| 3.2 | 17.11.2022 | Besprechung und Hilfestellung Kommentarbereich | Alle | 45 |
+ |
+| 3.3 | 17.11.2022 | Einrichtung des MySQL Workbench Servers, um das Projekt auf meinem Gerät starten zu können | Joel | 45 |
+ |
+| 3.4 | 17.11.2022 | «Nicht gefunden» Anzeige erstellen | Joel | 30 |
+ |
+| 3.5 | 17.11.2022 | XSS in der Suchfunktion verhindern | Joel | 60 |
+ |
+| 3.6 | 17.11.2022 | Fehlertesting: Produkt mehr als einmal in den Warenkorb hinzufügen | Melanie | 25 |
+ |
+| 3.7 | 17.11.2022
+ | Alle Links im Header funktionierend machen | Melanie | 20 |
+ |
+| 3.8 | 17.11.2022
+ | Bestellungsbestätigungsemail anpassen | Melanie | 45 |
+ |
+| 3.9 | 17.11.2022 | CSS für Warenkorb und CheckOut anpassen | Melanie | 20 |
+ |
+| 3.10 | 17.11.2022 | Funktionalität des Kommentare senden | Delia | 60 |
+ |
+| 3.11 | 17.11.2022 | Funktionalit |
+ |
+ |
+ |
+| 3.11 | 17.11.2022 | Funktionalität Textarea-Erweiterung bei Input | Delia | 45 |
+ |
+| 3. | 17.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 |
+ |
 
 **\*HDKOM** = **H** ead **D** eveloper **K** ick- **O** ff **M** eeting (Zweck: Besprechung des Projektstands und den Plänen für diese Woche)
 _alternativ__:_ _HDMI = Head Developer_ _Management_ _Interchange_
 
-## 2.2 Milestones
+\*\*verbraucht wegen Problemen mit OneDrive, Probleme mit Code-Sharing und da Projekt nicht gestartet werden konnte
 
-| Datum | Ziel |
-| --- | --- |
-| 03.11.2022 | IPE abschliessen |
-| 10.11.2022 | Projekt läuft auf allen Notebooks der Gruppenmitglieder |
-| 17.11.2022 | Webpage ist gehostet |
-| 01.12.2022 | Kommentierbereich funktioniert |
-| 08.12.2022 | Check-Out funktioniert |
+  1.
+## Milestones
 
-## 3. Entscheiden
+03.11.2022 IPE abschliessen
+
+10.11.2022 Projekt läuft auf allen Notebooks der Gruppenmitglieder
+
+17.11.2022 Webpage ist gehostet
+
+01.12.2022 Kommentierbereich funktioniert
+
+08.12.2022 Check-Out funktioniert
+
+1.
+# Entscheiden
 
 Wie wird die Password Policy gestaltet?
 Die Passwörter sollen mindestens 8 Zeichen beinhalten, darunter mindestens eine Zahl und mindestens einen Buchstaben. Mindestens ein Buchstabe muss grossgeschrieben werden. Leerzeichen im Passwort sind nicht erlaubt.
@@ -123,59 +237,91 @@ Wir wollen unsere Website ähnlich wie Programmiercode in einer IDE gestalten. D
 | Blauer Akzent 2 | Akzente für wichtige Abschnitte | #6495ED |
 | Blauer Akzent 3 | Akzente für Navbar und Suche | #0047AB |
 
-## 4. Realisieren
+1.
+# Realisieren
 
 Die Datenbank wird kostenlos auf AWS via cockroachlabs gehostet.
 
 SQL-User: chellerassle Passwort: 4UludCxLOxjr2hvFTXm24g
 
-## 5. Kontrollieren
+1.
+# Kontrollieren
 
 Wir testen nur die Anforderungen, die erfüllt wurden und nicht zur Kategorie «_Rahmenbedingungen_» zählen:
 
 | **Nummer** | **Beschreibung** | **Status** |
 | --- | --- | --- |
-| 1 | Produkte im Warenkorb können entfernt werden ||
-| 2 | Um ins Check-out zu gelangen muss man eingeloggt sein. ||
-| 3 | Ein Benutzer kann sich mit Namen, E-Mail und Passwort registrieren. ||
-| 4 | Ein registrierter Benutzer kann sich mit E-Mail und Passwort anmelden. ||
-| 5 | Alle Eingaben werden auf Gefahren überprüft. ||
-| 6 | Es gibt eine Password Policy. ||
-| 7 | Die E-Mail wird validiert. ||
-| 8 | Es gibt eine E-Mail-Verifikation. ||
-| 9 | Um etwas zu kaufen, muss man verifiziert sein. ||
-| 10 | Die Adresseingaben im ersten Check-Out eines neu registrierten Benutzers werden in der Datenbank gespeichert. ||
-| 11 | Die Adresseingaben im Check-Out werden automatisch befüllt, wenn die Daten in der Datenbank vorhanden sind. ||
-| 12 | Der Benutzer kann online bezahlen. ||
-| 13 | Die versendete E-Mail enthält den Code als Datei im Anhang. ||
-| 14 | Es gibt ein Kommentarbereich auf der Produktseite. ||
-| 15 | Allen Benutzern werden die Kommentare von anderen Benutzern angezeigt. ||
-| 16 | Nur eingeloggte Benutzer können Kommentare schreiben. ||
-| 17 | OneDrive wird als Speicherort verwendet. ||
-| 18 | Jeden Halbtag wird das Projekt und die Dokumentation Auf GitHub gepusht. ||
-| 19 | Die Webapplikation wird gehostet. ||
-| 20 | Die Datenbank für die Webapplikation wird online gehostet, so dass alle Mitentwickler damit arbeiten können. ||
-| 21 | Das Projekt muss bis am 15.12.2022 fertig sein. ||
+| 1 | Produkte im Warenkorb können entfernt werden |
+ |
+| 2 | Um ins Check-out zu gelangen muss man eingeloggt sein. |
+ |
+| 3 | Ein Benutzer kann sich mit Namen, E-Mail und Passwort registrieren. |
+ |
+| 4 | Ein registrierter Benutzer kann sich mit E-Mail und Passwort anmelden. |
+ |
+| 5 | Alle Eingaben werden auf Gefahren überprüft. |
+ |
+| 6 | Es gibt eine Password Policy. |
+ |
+| 7 | Die E-Mail wird validiert. |
+ |
+| 8 | Es gibt eine E-Mail-Verifikation. |
+ |
+| 9 | Um etwas zu kaufen, muss man verifiziert sein. |
+ |
+| 10 | Die Adresseingaben im ersten Check-Out eines neu registrierten Benutzers werden in der Datenbank gespeichert. |
+ |
+| 11 | Die Adresseingaben im Check-Out werden automatisch befüllt, wenn die Daten in der Datenbank vorhanden sind. |
+ |
+| 12 | Der Benutzer kann online bezahlen. |
+ |
+| 13 | Die versendete E-Mail enthält den Code als Datei im Anhang. |
+ |
+| 14 | Es gibt ein Kommentarbereich auf der Produktseite. |
+ |
+| 15 | Allen Benutzern werden die Kommentare von anderen Benutzern angezeigt. |
+ |
+| 16 | Nur eingeloggte Benutzer können Kommentare schreiben. |
+ |
+| 17 | OneDrive wird als Speicherort verwendet. |
+ |
+| 18 | Jeden Halbtag wird das Projekt und die Dokumentation Auf GitHub gepusht. |
+ |
+| 19 | Die Webapplikation wird gehostet. |
+ |
+| 20 | Die Datenbank für die Webapplikation wird online gehostet, so dass alle Mitentwickler damit arbeiten können. |
+ |
+| 21 | Das Projekt muss bis am 15.12.2022 fertig sein. |
+ |
 
 ErfülltNoch nicht erfülltNicht erfülltIn Bearbeitung
 
-  
-### 5.1 Testfälle
+  1.
+## Testfälle
 
 | **Nummer** | **Voraussetzung** | **Eingabe** | **Erwartete Ausgabe** |
 | --- | --- | --- | --- |
-|||||
+|
+ |
+ |
+ |
+ |
 
-### 5.2 Testprotokoll
+  1.
+## Testprotokoll
 
 | **Nummer** | **Datum** | **Resultat** | **Durchgeführt** |
 | --- | --- | --- | --- |
-|||||
+|
+ |
+ |
+ |
+ |
 
-  
-### 5.3 Testfazit
+  1.
+## Testfazit
 
+1.
+# Auswerten
 
-## 6. Auswerten
-
-Siehe Portfolios
+- _Siehe_ _Portfolios_
