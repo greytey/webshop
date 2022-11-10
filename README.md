@@ -115,8 +115,8 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 | 3.9 | 17.11.2022 | CSS für Warenkorb und CheckOut anpassen | Melanie | 20 ||
 | 3.10 | 17.11.2022 | Funktionalität des Kommentaresenden | Delia | 60 ||
 | 3.11 | 17.11.2022 | Funktionalit des Kommentare bearbeiten | Delia | 30 ||
-| 3.11 | 17.11.2022 | Funktionalität Textarea-Erweiterung bei Input | Delia | 45 ||
-| 3. | 17.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 ||
+| 3.12 | 17.11.2022 | Funktionalität Textarea-Erweiterung bei Input | Delia | 45 ||
+| 3.13 | 17.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 ||
 
 **\*HDKOM** = **H** ead **D** eveloper **K** ick- **O** ff **M** eeting (Zweck: Besprechung des Projektstands und den Plänen für diese Woche)
 _alternativ__:_ _HDMI_ _=_ _Head_ _Developer_ _Management_ _Interchange_
