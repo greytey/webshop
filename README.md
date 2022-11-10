@@ -95,15 +95,15 @@ _alternativ__:_ _HDMI = Head Developer_ _Management_ _Interchange_
 
 ## 2.2 Milestones
 
-03.11.2022 IPE abschliessen
+| 03.11.2022 | IPE abschliessen |
 
-10.11.2022 Projekt läuft auf allen Notebooks der Gruppenmitglieder
+| 10.11.2022 | Projekt läuft auf allen Notebooks der Gruppenmitglieder |
 
-17.11.2022 Webpage ist gehostet
+| 17.11.2022 | Webpage ist gehostet |
 
-01.12.2022 Kommentierbereich funktioniert
+| 01.12.2022 | Kommentierbereich funktioniert |
 
-08.12.2022 Check-Out funktioniert
+| 08.12.2022 | Check-Out funktioniert |
 
 ## 3. Entscheiden
 
@@ -137,48 +137,27 @@ Wir testen nur die Anforderungen, die erfüllt wurden und nicht zur Kategorie «
 
 | **Nummer** | **Beschreibung** | **Status** |
 | --- | --- | --- |
-| 1 | Produkte im Warenkorb können entfernt werden |
- |
-| 2 | Um ins Check-out zu gelangen muss man eingeloggt sein. |
- |
-| 3 | Ein Benutzer kann sich mit Namen, E-Mail und Passwort registrieren. |
- |
-| 4 | Ein registrierter Benutzer kann sich mit E-Mail und Passwort anmelden. |
- |
-| 5 | Alle Eingaben werden auf Gefahren überprüft. |
- |
-| 6 | Es gibt eine Password Policy. |
- |
-| 7 | Die E-Mail wird validiert. |
- |
-| 8 | Es gibt eine E-Mail-Verifikation. |
- |
-| 9 | Um etwas zu kaufen, muss man verifiziert sein. |
- |
-| 10 | Die Adresseingaben im ersten Check-Out eines neu registrierten Benutzers werden in der Datenbank gespeichert. |
- |
-| 11 | Die Adresseingaben im Check-Out werden automatisch befüllt, wenn die Daten in der Datenbank vorhanden sind. |
- |
-| 12 | Der Benutzer kann online bezahlen. |
- |
-| 13 | Die versendete E-Mail enthält den Code als Datei im Anhang. |
- |
-| 14 | Es gibt ein Kommentarbereich auf der Produktseite. |
- |
-| 15 | Allen Benutzern werden die Kommentare von anderen Benutzern angezeigt. |
- |
-| 16 | Nur eingeloggte Benutzer können Kommentare schreiben. |
- |
-| 17 | OneDrive wird als Speicherort verwendet. |
- |
-| 18 | Jeden Halbtag wird das Projekt und die Dokumentation Auf GitHub gepusht. |
- |
-| 19 | Die Webapplikation wird gehostet. |
- |
-| 20 | Die Datenbank für die Webapplikation wird online gehostet, so dass alle Mitentwickler damit arbeiten können. |
- |
-| 21 | Das Projekt muss bis am 15.12.2022 fertig sein. |
- |
+| 1 | Produkte im Warenkorb können entfernt werden ||
+| 2 | Um ins Check-out zu gelangen muss man eingeloggt sein. ||
+| 3 | Ein Benutzer kann sich mit Namen, E-Mail und Passwort registrieren. ||
+| 4 | Ein registrierter Benutzer kann sich mit E-Mail und Passwort anmelden. ||
+| 5 | Alle Eingaben werden auf Gefahren überprüft. ||
+| 6 | Es gibt eine Password Policy. ||
+| 7 | Die E-Mail wird validiert. ||
+| 8 | Es gibt eine E-Mail-Verifikation. ||
+| 9 | Um etwas zu kaufen, muss man verifiziert sein. ||
+| 10 | Die Adresseingaben im ersten Check-Out eines neu registrierten Benutzers werden in der Datenbank gespeichert. ||
+| 11 | Die Adresseingaben im Check-Out werden automatisch befüllt, wenn die Daten in der Datenbank vorhanden sind. ||
+| 12 | Der Benutzer kann online bezahlen. ||
+| 13 | Die versendete E-Mail enthält den Code als Datei im Anhang. ||
+| 14 | Es gibt ein Kommentarbereich auf der Produktseite. ||
+| 15 | Allen Benutzern werden die Kommentare von anderen Benutzern angezeigt. ||
+| 16 | Nur eingeloggte Benutzer können Kommentare schreiben. ||
+| 17 | OneDrive wird als Speicherort verwendet. ||
+| 18 | Jeden Halbtag wird das Projekt und die Dokumentation Auf GitHub gepusht. ||
+| 19 | Die Webapplikation wird gehostet. ||
+| 20 | Die Datenbank für die Webapplikation wird online gehostet, so dass alle Mitentwickler damit arbeiten können. ||
+| 21 | Das Projekt muss bis am 15.12.2022 fertig sein. ||
 
 ErfülltNoch nicht erfülltNicht erfülltIn Bearbeitung
 
@@ -187,21 +166,13 @@ ErfülltNoch nicht erfülltNicht erfülltIn Bearbeitung
 
 | **Nummer** | **Voraussetzung** | **Eingabe** | **Erwartete Ausgabe** |
 | --- | --- | --- | --- |
-|
- |
- |
- |
- |
+|||||
 
 ### 5.2 Testprotokoll
 
 | **Nummer** | **Datum** | **Resultat** | **Durchgeführt** |
 | --- | --- | --- | --- |
-|
- |
- |
- |
- |
+|||||
 
   
 ### 5.3 Testfazit
