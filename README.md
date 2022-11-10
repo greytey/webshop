@@ -7,65 +7,7 @@ By Delia Reho, Melanie Völlmin & Joel Jütte
 | **Datum** | **Version** | **Änderung** | **Autor** |
 | --- | --- | --- | --- |
 | 03.11.2022 | 0.1 | Initial I P E | Joel Jütte |
-| 10.11.2022 |
- |
- |
- |
-| 17.11.2022 |
- |
- |
- |
-| 24.11.2022 |
- |
- |
- |
-| 01.12.2022 |
- |
- |
- |
-| 08.12.2022 |
- |
- |
- |
-| 15.12.2022 |
- |
- |
- |
-
-## Inhaltsverzeichnis
-
-[Inhaltsverzeichnis]
-
-[1.Informieren]
-
-[1.1Projekt]
-
-[1.2Quellen]
-
-[1.3Anforderungen]
-
-[1.4Diagramme]
-
-[2.Planen]
-
-[2.1Arbeitspakete/To-Do]
-
-[2.2Milestones]
-
-[3.Entscheiden]
-
-[4.Realisieren]
-
-[5.Kontrollieren]
-
-[5.1Testfälle]
-
-[5.2Testprotokoll]
-
-[5.3Testfazit]
-
-[6.Auswerten]
-
+| 10.11.2022 ||||
 
 ## 1. Informieren
 
@@ -141,18 +83,12 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 | 1.5 | 03.11.2022 | Informieren wie man JavaScript (jQuery) mit Springboot verwendet. jQuery für die Login Seite schreiben. | Joel | 45 | 25 |
 | 1.6 | 03.11.2022 | GUI des Kommentarbereichs entwerfen | Delia | 45 | 30 |
 | 1.7 | 03.11.2022 | GUI des Kommentarbereichs implementieren | Delia | 45 | 60 |
-| 1.8 | 03.11.2022 | Dokumentation fertigstellen und gemeinsam mit aktuellen Projektstand auf einem neuen Github-Repository hochladen | Alle | 45 |
- |
-| 2.1 | 10.11.2022 | Wöchentliches HDKOM\* | Alle | 22 |
- |
-| 2.2 | 10.11.2022 | Login mit Datenbank verbinden | Joel | 45 |
- |
-| 2.3 | 10.11.2022 | Validierung von Eingabe und Password Policy Implementieren | Joel | 45 |
- |
-| 2.4 | 10.11.2022 | Login Filter implementieren | Joel | 90 |
- |
-| 2.4 | 10.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 |
- |
+| 1.8 | 03.11.2022 | Dokumentation fertigstellen und gemeinsam mit aktuellen Projektstand auf einem neuen Github-Repository hochladen | Alle | 45 ||
+| 2.1 | 10.11.2022 | Wöchentliches HDKOM\* | Alle | 22 ||
+| 2.2 | 10.11.2022 | Login mit Datenbank verbinden | Joel | 45 ||
+| 2.3 | 10.11.2022 | Validierung von Eingabe und Password Policy Implementieren | Joel | 45 ||
+| 2.4 | 10.11.2022 | Login Filter implementieren | Joel | 90 ||
+| 2.4 | 10.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 ||
 
 **\*HDKOM** = **H** ead **D** eveloper **K** ick- **O** ff **M** eeting (Zweck: Besprechung des Projektstands und den Plänen für diese Woche)
 _alternativ__:_ _HDMI = Head Developer_ _Management_ _Interchange_
