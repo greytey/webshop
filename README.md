@@ -125,6 +125,7 @@ _alternativ__:_ _HDMI_ _=_ _Head_ _Developer_ _Management_ _Interchange_
 
 ### 2.2 Milestones
 
+| Datum | Ziel |
 | --- | --- |
 | 03.11.2022 | IPE abschliessen |
 | 17.11.2022 | Projekt läuft auf allen Notebooks der Gruppenmitglieder |
