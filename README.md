@@ -6,7 +6,7 @@ By Delia Reho, Melanie Völlmin & Joel Jütte
 
 | **Datum** | **Version** | **Änderung** | **Autor** |
 | --- | --- | --- | --- |
-| 03.11.2022 | 0.1 | Initial I P E | Joel Jütte |
+| 03.11.2022 | 1.1 | Initial I P E from Sequel | Joel Jütte |
 | 10.11.2022 ||||
 
 ## 1. Informieren
