@@ -95,14 +95,12 @@ _alternativ__:_ _HDMI = Head Developer_ _Management_ _Interchange_
 
 ## 2.2 Milestones
 
+| Datum | Ziel |
+| --- | --- |
 | 03.11.2022 | IPE abschliessen |
-
 | 10.11.2022 | Projekt läuft auf allen Notebooks der Gruppenmitglieder |
-
 | 17.11.2022 | Webpage ist gehostet |
-
 | 01.12.2022 | Kommentierbereich funktioniert |
-
 | 08.12.2022 | Check-Out funktioniert |
 
 ## 3. Entscheiden
