@@ -30,6 +30,8 @@ public class TestController {
     public String home(Model model) {
         List<Item> items = jdbcTemplate.getAllProducts();
         model.addAttribute("items", items);
+        model.addAttribute("searchResult", "");
+        model.addAttribute("isHidden", true);
         currentlyOpenedItem = null;
         return "index";
     }
@@ -44,18 +46,22 @@ public class TestController {
 
     @PostMapping("/login")
     public String loginPost(@ModelAttribute User user, Model model) {
-        //Userdaten überprüfen (eventuell Email-check)
+        boolean wasLoginSuccessful = false;
+        if (user.getPassword().equals(user.getRepeatPassword())) {
+            wasLoginSuccessful = jdbcTemplate.registerNewUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getRepeatPassword());
+        } else {
+            wasLoginSuccessful = jdbcTemplate.login(user.getEmail(), user.getPassword());
+            user = jdbcTemplate.getLoggedInUser(user.getEmail(), user.getPassword());
+        }
         this.user = user;
-        /*
-        if (!jdbcTemplate.login(user.getUsername(), user.getRepeatPassword())) {
-            jdbcTemplate.registerNewUser(user.getUsername(), user.getPassword(), user.getRepeatPassword());
-            System.out.println("Neuer Benutzer registriert");
+
+        if (returnToCheckOut && wasLoginSuccessful) {
+            return "redirect:/check-out";
+        } else if (!returnToCheckOut && wasLoginSuccessful) {
+            return "redirect:/";
+        } else{
+            return "login";
         }
-         */
-        if(returnToCheckOut){
-            return "check-out";
-        }
-        return "redirect:/";
     }
 
     @GetMapping("/product-page")
@@ -70,6 +76,8 @@ public class TestController {
             model.addAttribute("code", item.getCode());
             model.addAttribute("length", item.getLength());
             model.addAttribute("id", item.getId());
+            model.addAttribute("comments",jdbcTemplate.getAllCommentsForAProduct(item.getId()));
+            model.addAttribute("numberOfComments", jdbcTemplate.getAllCommentsForAProduct(item.getId()).size());
         }
 
         return "product-page";
@@ -101,7 +109,7 @@ public class TestController {
     }
 
     @GetMapping("/remove")
-    public String removeFromCart(@RequestParam(name = "productName", defaultValue = "null") String productName, Model model){
+    public String removeFromCart(@RequestParam(name = "productName", defaultValue = "null") String productName, Model model) {
         cart.removeProduct(productName);
         currentlyOpenedItem = null;
         List<Item> itemsInCart = cart.getItemsSelected();
@@ -112,13 +120,13 @@ public class TestController {
 
     @GetMapping("/check-out")
     public String checkOut(Model model) {
-        if(user == null){
+        if (user == null) {
             returnToCheckOut = true;
             return "redirect:/login";
         }
         currentlyOpenedItem = null;
         List<Item> itemsInCart = cart.getItemsSelected();
-        model.addAttribute("order", new Order());
+        model.addAttribute("order", new Order(user));
         model.addAttribute("cart", itemsInCart);
         model.addAttribute("total", cart.getTotal());
 
@@ -127,15 +135,15 @@ public class TestController {
 
     @PostMapping("/check-out")
     public String ordered(@ModelAttribute Order order, Model model) {
-        if(user == null){
+        if (user == null) {
             return "redirect:/login";
         }
-        if(order.isChecked()) {
+        if (order.isChecked()) {
             //Update Userdata
             user.setCity(order.getCity());
             user.setZip(order.getZip());
             user.setAddress(order.getAddress());
-            user.setLastname(order.getName());
+            user.setLastname(order.getLastname());
             user.setFirstname(order.getFirstname());
             user.setEmail(order.getEmail());
             user.updateDatabase();
@@ -155,6 +163,11 @@ public class TestController {
         if (keyword != null) {
             List<Item> items = jdbcTemplate.getItemsFromSearch(keyword);
             model.addAttribute("items", items);
+            model.addAttribute("isHidden", false);
+            model.addAttribute("searchResult", "Results for &quot;" + keyword + "&quot;");
+            if (items.size() == 0){
+                model.addAttribute("searchResult", "No results for &quot;" + keyword + "&quot;");
+            }
         }
         return "index";
     }

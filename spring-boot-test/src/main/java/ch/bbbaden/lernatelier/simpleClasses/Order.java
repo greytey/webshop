@@ -3,7 +3,7 @@ package ch.bbbaden.lernatelier.simpleClasses;
 public class Order {
 
     private User user;
-    private String name;
+    private String lastname;
     private String firstname;
     private String address;
     private String email;
@@ -12,9 +12,11 @@ public class Order {
     private String city;
     private boolean checked;
 
-    public void Order(User user){
+    public Order(){}
+
+    public Order(User user){
         this.user = user;
-        this.name = user.getLastname();
+        this.lastname = user.getLastname();
         this.firstname = user.getFirstname();
         this.email = user.getEmail();
         this.city = user.getCity();
@@ -33,12 +35,12 @@ public class Order {
     public User getUser() {
         return user;
     }
-    public String getName() {
-        return name;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getFirstname() {

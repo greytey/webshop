@@ -179,86 +179,70 @@ h2 {
     background-color: var(--light-blue);
     height: 45px;
     width: 400px;
-    margin-top: 234px
+    margin-top: 234px;
 }
 
 .input {
     width: 700px;
 }
 
-.cmt-add {
-    background-color: var(--light-blue);
-    height: 45px;
-    width: 400px;
-}
-
-.comment-section {
+.comment-section{
     padding: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.title-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 1130px;
-    height: 40px;
-    display: block;
-    color: #FFFFFF;
-    line-height: 40px;
-    font-weight: 600;
-    background-color: #242424;
-    text-align: center;
+.date{
+    float:right;
 }
 
-.tool-bar {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    right: 0;
-    display: block;
-    width: 1130px;
-    height: 30px;
-    line-height: 30px;
-    background-color: #242424;
+.comment-heading{
+    font-size: 20px;
+    margin-left: -10px;
+    margin-bottom: 20px;
+    color: var(--main-color);
 }
 
-.tool-bar ul {
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-
-}
-
-.tool-bar ul li {
-    display: inline-block;
-    margin: 0;
-    padding: 0px 6px;
-    text-decoration: none;
-    color: #FFFFFF;
-}
-
-.textarea {
-    position: relative;
-    top: 70px;
+.comment-area{
     resize: none;
-    width: 1130px;
-    height: 100px;
-    background-color: var(--dark-blue);
-    border: none;
-    color: #FFFFFF;
-    margin-left: -15px;
-    margin-bottom: 90px;
+    display:block;
     outline: none;
+    margin-left: -15px;
+    width: 1000px;
+    height:60px;
+    color: #000000;
+    background-color: var(--main-color);
+    box-shadow: 6px 6px 10px 0px rgba(0, 0, 0, 0.3);
+    border-left: 6px solid var(--light-blue);
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
 }
 
-.send-comment {
+.comment-info{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 5px;
+}
+
+.comment{
+    padding: 5px;
+}
+
+.comments{
+    width: 980px;
+    padding: 10px;
+    border-bottom: 3px solid var(--light-blue);
+}
+
+
+.send-comment{
+    margin-top: 15px;
+    margin-bottom: 20px;
     margin-left: -15px;
-    color: #FFFFFF;
-    background-color: #242424
+    color: var(--main-color);
+    background-color: #242424;
+
 }
 
 .left {

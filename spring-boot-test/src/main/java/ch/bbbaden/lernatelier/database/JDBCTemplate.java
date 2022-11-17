@@ -1,5 +1,8 @@
 package ch.bbbaden.lernatelier.database;
 
+import ch.bbbaden.lernatelier.rowmapper.CommentRowMapper;
+import ch.bbbaden.lernatelier.rowmapper.UserRowMapper;
+import ch.bbbaden.lernatelier.simpleClasses.Comment;
 import ch.bbbaden.lernatelier.simpleClasses.Item;
 import ch.bbbaden.lernatelier.rowmapper.ItemsRowMapper;
 import ch.bbbaden.lernatelier.simpleClasses.LoginPolicy;
@@ -10,8 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCallback;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,7 +31,9 @@ public class JDBCTemplate implements CommandLineRunner {
     private List<Item> itemsList;
     private List<Item> searchedItemsList;
     private List<User> users;
-    private LoginPolicy loginPolicy;
+    private LoginPolicy loginPolicy = new LoginPolicy();
+
+    private List<Comment> comments;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -33,13 +44,32 @@ public class JDBCTemplate implements CommandLineRunner {
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS item(" +
                 "id SERIAL, productname VARCHAR(255), description BLOB, price FLOAT, code VARCHAR(255), length VARCHAR(255));");
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS user(" +
-                "id SERIAL, firstname VARCHAR(100), lastname VARCHAR(100), email VARCHAR(100), password VARCHAR(100));");
+                "id SERIAL, firstname VARCHAR(100), lastname VARCHAR(100), email VARCHAR(100), password VARCHAR(100), address VARCHAR(255), zip VARCHAR(100), city VARCHAR(100));");
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS comment(" +
+                "id SERIAL, displayname VARCHAR(100), createdate VARCHAR(100), commenttext BLOB, productid INT);");
+
     }
 
     public List<Item> getAllProducts() {
         itemsList = jdbcTemplate.query("SELECT * FROM item", new ItemsRowMapper());
 
         return itemsList;
+    }
+
+    public List<Comment> getAllComments(){
+        comments = jdbcTemplate.query("SELECT * FROM comment", new CommentRowMapper());
+        return comments;
+    }
+
+    public List<Comment> getAllCommentsForAProduct(int id){
+        getAllComments();
+        List<Comment> commentsForAProduct = new ArrayList<>();
+        for(Comment comment : comments){
+            if(comment.getProduct() == id){
+                commentsForAProduct.add(comment);
+            }
+        }
+        return commentsForAProduct;
     }
 
     public Item getItemFromId(int id) {
@@ -58,10 +88,10 @@ public class JDBCTemplate implements CommandLineRunner {
     }
 
     public boolean registerNewUser(String firstname, String lastname, String email, String password, String repeatPassword) {
-        if (password == repeatPassword) {
-            if (!doesUserExist(firstname + " " + lastname)) {
+        if (password.equals(repeatPassword)) {
+            if (!doesUserExist(email)) {
                 if (loginPolicy.loginPolicy(firstname, lastname, email, password)){
-                    jdbcTemplate.execute("INSERT INTO TABLE user (firstname, lastname, email, password) VALUES(\"" + firstname + "\", \"" + lastname + "\", \"" + lastname + "\", \"" + password + "\");");
+                    jdbcTemplate.execute("INSERT INTO user (firstname, lastname, email, password) VALUES(\"" + firstname + "\", \"" + lastname + "\", \"" + email + "\", \"" + password + "\");");
                     getUsers();
                     return true;
                 }else {
@@ -75,37 +105,63 @@ public class JDBCTemplate implements CommandLineRunner {
         }
     }
 
-    public boolean login(String name, String password) {
-        if (doesUserExist(name)) {
-            if (checkLogin(name, password)) {
+    public boolean login(String email, String password) {
+        if (doesUserExist(email)) {
+            if (checkLogin(email, password)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean checkLogin(String name, String password) {
+    private boolean checkLogin(String email, String password) {
         for (User user : users) {
-            if (user.getName().equals(name) && user.getPassword().equals(password)) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean doesUserExist(String name) {
+    private boolean doesUserExist(String email) {
+
         for (User user : users) {
-            if (user.getName().equals(name)) {
+            if (user.getEmail().equals(email)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public User getLoggedInUser(String email, String password){
+        List<User> tempUsers = jdbcTemplate.query("SELECT * FROM user WHERE email = \"" + email + "\" AND password = \"" + password + "\";", new UserRowMapper());
+        return tempUsers.get(0);
     }
 
     private List<User> getUsers() {
-        itemsList = jdbcTemplate.query("SELECT * FROM user", new ItemsRowMapper());
+        users = jdbcTemplate.query("SELECT * FROM user", new UserRowMapper());
         return users;
     }
+
+    public boolean updateUser(User user){
+        final String query = "UPDATE user SET firstname = ?, lastname = ?, address = ?, zip = ?, city = ? WHERE email = ? AND password = ?";
+        return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){
+            @Override
+            public Boolean doInPreparedStatement(PreparedStatement ps)
+                    throws SQLException, DataAccessException {
+
+                ps.setString(1, user.getFirstname());
+                ps.setString(2, user.getLastname());
+                ps.setString(3, user.getAddress());
+                ps.setString(4, user.getZip());
+                ps.setString(5, user.getCity());
+
+                ps.setString(6, user.getEmail());
+                ps.setString(7, user.getPassword());
+                return ps.execute();
+            }
+        });
+}
 
     @Override
     public void run(String... args) throws Exception {

@@ -48,20 +48,20 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <form action="#" th:action="@{/check-out}" th:object="${order}" method="post">
+            <form action="#" th:action="@{/check-out}" th:object="${order}" class="checkout-form" method="post">
                 <h2>Address</h2>
                 <label for="lname" id="lnamelabel" class="halfsize">Name</label>
                 <label for="fname" class="halfsize">First Name</label><br>
-                <input type="text" th:field="*{name}" id="lname" name="lname" class="halfsize">
-                <input type="text" th:field="*{firstname}" id="fname" name="fname" class="halfsize"><br>
+                <input type="text" th:field="*{lastname}" th:value="*{lastname}" id="lname" name="lname" class="halfsize">
+                <input type="text" th:field="*{firstname}" th:value="*{firstname}" id="fname" name="fname" class="halfsize"><br>
                 <label for="address" class="fullsize">Street and House-Nr.</label><br>
-                <input type="text" th:field="*{address}" id="address" name="address" class="fullsize"><br/>
+                <input type="text" th:field="*{address}" th:value="*{address}" id="address" name="address" class="fullsize"><br/>
                 <label for="plz" id="plzlabel">ZIP Code</label>
                 <label for="city" class="city">City</label><br>
-                <input type="text" th:field="*{zip}" id="plz" name="plz">
-                <input type="text" th:field="*{city}" id="city" name="city"><br/>
+                <input type="text" th:field="*{zip}" th:value="*{zip}" id="plz" name="plz">
+                <input type="text" th:field="*{city}" th:value="*{city}" id="city" name="city"><br/>
                 <label for="email" class="fullsize">Email</label><br>
-                <input type="text" th:field="*{email}" id="email" name="email" class="fullsize"><br/>
+                <input type="text" th:field="*{email}" th:value="*{email}" id="email" name="email" class="fullsize"><br/>
                 <div class="broken-info">
                     <p><b>An invoice is sent with the order. There is no other option than to pay by invoice.</b></p>
                     <br>

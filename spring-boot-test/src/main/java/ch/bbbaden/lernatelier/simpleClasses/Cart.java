@@ -49,7 +49,7 @@ public class Cart {
                 "left {\n text-align: end;\n}" +
                 "</style>\n</head>\n" +
                 "<body>\n<div class=\"container\">" +
-                "<p>Hallo " + order.getFirstname() + " " + order.getName() + "</p>\n" +
+                "<p>Hallo " + order.getFirstname() + " " + order.getLastname() + "</p>\n" +
                 "<p>Vielen Dank für deine Bestellung!</p>\n" +
                 "<p>Hier nochmals eine Übersicht:</p>\n<table>\n" + itemText +
                 "<tr>\n<td>Total</td>\n<td class=\"left\">CHF " + getTotal() + "</td>\n</tr>\n" +

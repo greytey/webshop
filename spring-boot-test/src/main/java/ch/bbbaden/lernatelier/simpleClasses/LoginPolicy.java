@@ -8,7 +8,7 @@ public class LoginPolicy {
 
     public boolean loginPolicy(String firstname, String lastname, String email, String password) {
 
-        if (!noWhiteSpaces(firstname) && !noWhiteSpaces(firstname) && !noWhiteSpaces(firstname) && !noWhiteSpaces(firstname)) {
+        if (!noWhiteSpaces(firstname) && !noWhiteSpaces(lastname) && !noWhiteSpaces(email) && !noWhiteSpaces(password)) {
             if (containsNumber(password)) {
                 if (containsLettersOnly(firstname) && containsLettersOnly(lastname)) {
                     if (containsLetter(password)) {

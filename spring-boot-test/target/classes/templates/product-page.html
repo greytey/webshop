@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
     <link rel="icon" type="image/x-icon" th:href="@{/img/codelinewayLogoOnlyClear.png}">
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
     <title>Product - codelineway</title>
 </head>
 <body>
@@ -68,27 +69,38 @@
         </div>
     </div>
 </div>
+
 <div class="comment-section">
     <div class="container">
         <div class="row">
-            <div class="col-md">
-                <div class="title-bar">Non-functioning comment section</div>
-                <div class="tool-bar">
-                    <ul>
-                        <li>File</li>
-                        <li>Edit</li>
-                        <li>View</li>
-                    </ul>
-                </div>
-                <textarea class="textarea">Type something here...</textarea>
-                <div class="submit-comment">
-                    <button type="submit" class=" btn comment-add rounded-pill">add Comment</button>
-                </div>
-            </div>
+            <div class="col-8">
 
-            <div class="col-sm">
+                <div class="comment-heading" th:text="'Comments(' + ${numberOfComments} + ')'">
+                </div>
+
                 <div>
+                    <textarea class="comment-area rounded" id="comment-area" placeholder="type something here..."></textarea>
 
+                    <button type="submit" class="send-comment btn">post comment</button>
+                </div>
+                <div class="comments">
+                    <div th:each="comment: ${comments}">
+                        <div class="comment-info">
+                            <div class="row">
+                                <div class="col">
+                                    <p th:text="${comment.name}"/>
+                                </div>
+                                <div class="col">
+                                    <p class="left" th:text="${comment.date}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comment">
+                            <p th:text="${comment.commenttext}"/>
+                        </div>
+                    </div>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,6 +110,8 @@
 <footer>
     <p>© Copyright 2022 - codelineway - All Rights Reserved.</p>
 </footer>
+
+<script th:src="@{/js/jquery.js}"></script>
 
 </body>
 </html>

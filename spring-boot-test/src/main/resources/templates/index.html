@@ -54,6 +54,9 @@
 
 <div class="container">
     <div class="row justify-content-center">
+        <div id="search-result">
+            <h3 th:hidden="${isHidden}" th:text="${searchResult}"/><br>
+        </div>
         <div th:each="item: ${items}">
             <a class="product-div-link zoom" th:href="@{/product-page(productId=${item.id})}">
                 <div class="product-div col-auto">
