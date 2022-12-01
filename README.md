@@ -2,19 +2,20 @@
 
 By Delia Reho, Melanie Völlmin & Joel Jütte
 
-![Logo](codelinewayLogoOnlyClear.png)
+
+![Logo](codelinewayOnlyLogoClear.png)
 
 | **Datum** | **Version** | **Änderung** | **Autor** |
 | --- | --- | --- | --- |
 | 03.11.2022 | 1.1 | Initial I P E | Joel Jütte |
 | 10.11.2022 | 1.2 | Start R | Melanie Völlmin |
 | 17.11.2022 | 1.3 | Fokus Kommentarbereich | Delia Reho |
-| 24.11.2022 ||||
-| 01.12.2022 ||||
+| 24.11.2022 | 1.4 | Fokus Sicherheit und Aufräumen | Joel Jütte |
+| 01.12.2022 | 1.5 | Alles funktioniert und sieht gut aus | Melanie Völlmin |
 | 08.12.2022 ||||
 | 15.12.2022 ||||
 
-## 1. Informieren
+## 1 Informieren
 
 ### 1.1 Projekt
 
@@ -47,6 +48,8 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 - [Bootstrap Form](https://getbootstrap.com/docs/4.0/components/forms/?)
 - jQuery zu [Springboot](https://www.codejava.net/frameworks/spring-boot/add-bootstrap-and-jquery-in-a-spring-boot-project) hinzufügen
 - [Test ob String eine Nummer enthält](https://www.tutorialspoint.com/Check-if-a-string-contains-a-number-using-Java#:~:text=To%20find%20whether%20a%20given,method%20of%20the%20Character%20class.)
+- [Dateien erstellen und hinein schreiben](https://www.w3schools.com/java/java_files_create.asp)
+- [Datei im Mail Anhang hinzufügen](https://www.baeldung.com/java-send-emails-attachments)
 
 ### 1.3 Anforderungen
 
@@ -74,12 +77,11 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 | 20 | Muss | Rand | Die Datenbank für die Webapplikation wird online gehostet, so dass alle Mitentwickler damit arbeiten können. |
 | 21 | Muss | Rand | Das Projekt muss bis am 15.12.2022 fertig sein. |
 
-  
 ### 1.4 Diagramme
 
 ## 2 Planen
 
-### 2.1 Arbeitspakete/To-Do
+### 2.1Arbeitspakete/To-Do
 
 | **Nr.** | **Frist** | **Beschreibung** | **Person** | **Zeit (geplant)** | **Zeit (effektiv)** |
 | --- | --- | --- | --- | --- | --- |
@@ -97,7 +99,8 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 | 2.3 | 10.11.2022 | Validierung von Eingabe und Password Policy Implementieren | Joel | 45 | 55 |
 | 2.4 | ~~10.11.2022~~ 17.11.2022 | Login auf der Webpage implementieren | Joel | 90 | 45 + 85130 |
 | 2.5 | 10.11.2022 | GUI des Kommentarbereichs fertigstellen | Delia | 90 | 30 |
-| 2.6 | ~~10.11.2022~~ 17.11.2022 | Funktionalität des Kommentarbereichs umsetzen| Delia | 90 | 120 |
+| 2.6 | ~~10.11.2022~~ 17.11.2022 | Funktionalität des Kommentarbereichs umsetzen
+ | Delia | 90 | 120 |
 | 2.7 | 10.11.2022 | Warenkorb-Feature «entfernen» hinzufügen | Melanie | 45 | 60 |
 | 2.8 | 10.11.2022 | Check-Out Formular anpassen/ Pflichtcheckbox hinzufügen | Melanie | 45 | 25 |
 | 2.9 | ~~10.11.2022~~ 17.11.2022 | Autofill Check-Out Formular vorbereiten | Melanie | 45 | 20+75 |
@@ -110,28 +113,42 @@ Beim **Leistungsziel 24** handelt es sich um das Sessionhandling und wo man dabe
 | 3.4 | 17.11.2022 | «Nicht gefunden» Anzeige erstellen | Joel | 30 | 30 |
 | 3.5 | 17.11.2022 | XSS in der Suchfunktion verhindern | Joel | 60 | 40 |
 | 3.6 | 17.11.2022 | Fehlertesting: Produkt mehr als einmal in den Warenkorb hinzufügen | Melanie | 25 | 10 |
-| 3.7 | ~~17.11.2022~~ 24.11.2022 | Alle Links im Header funktionierend machen | Melanie | 20 | 5 |
+| 3.7 | ~~17.11.2022~~ 24.11.2022 | Alle Links im Header funktionierend machen | Melanie | 20 | 20 |
 | 3.8 | 17.11.2022| Hilfestellung Comments | Melanie | 45 | 45 |
-| 3.9 | ~~17.11.2022~~ 24.11.2022 | CSS für Warenkorb und CheckOut anpassen | Melanie | 20 ||
+| 3.9 | ~~17.11.2022~~ 24.11.2022 | CSS für Warenkorb und CheckOut anpassen | ~~Melanie~~ Joel | 20 | 25 |
 | 3.10 | ~~17.11.2022~~ 24.11.2022 | Funktionalität Kommentare senden | Delia | 60 | 50+ |
 | 3.11 | 17.11.2022 | Funktionalität Kommentare anzeigen | Delia | 45 | 60 |
 | 3.12 | 17.11.2022 | Funktionalität Textarea-Erweiterung bei Input | Delia | 30 | 40 |
 | 3.13 | 17.11.2022 | CSS für Comment Section anpassen | Delia | 15 | 10 |
 | 3.14 | 17.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 | 15 |
 | 4 ||||||
-| 4.1 | 24.11.2022 | Wöchentliches HDKOM\* | Alle | 22 ||
-| 4.2 | 24.11.2022 |XSS-Testen und allenfalls verhindern | Joel | 22 ||
-| 4.3 | 24.11.2022 | SQL-Injektion verhindern | Joel / Melanie | 45 ||
-| 4.4 | 24.11.2022 | CSS aufräumen | Joel | 22 ||
-| 4.5 | 24.11.2022 | Formulare optisch überarbeiten | Joel | 45 ||
-| 4.6 | 24.11.2022 | Code Datei (Produkt) in die DB einbinden | Joel | 45 ||
-| 4.7 | 24.11.2022 | Error Seite erstellen | Melanie | 45 ||
-| 4.8 | 24.11.2022 | Error Seite Implementieren | Melanie | 22 ||
-| 4.9 | 24.11.2022 | Bestellbestätigungsemail anpassen | Melanie | 45 ||
-| 4.10 | 24.11.2022 | Aktuelles Datum anzeigen bei Kommentaren | Delia | 45 ||
-| 4.11 | 24.11.2022 | Funktionalität Kommentare senden | Delia | 60 ||
-| 4.12 | 24.11.2022 | Funktionalität mehrere Kommentare anzeigen | Delia | 45 ||
-| 4.13 | 24.11.2022 | Dokumentation nachführen und mit dem Projekt auf Github pushen | Alle | 22 ||
+| 4.1 | 24.11.2022 | Wöchentliches HDKOM\* | Alle | 22 | 10 |
+| 4.2 | 24.11.2022 | XSS-Testen und allenfalls verhindern | ~~Joel~~ Melanie | 22 | 15 |
+| 4.3 | 24.11.2022 | SQL-Injektion verhindern Zusatz: Exceptions werfen für Klarheit | Joel / Melanie | 45 | 30 |
+| 4.4 | 24.11.2022 | CSS aufräumen | Joel | 22 | 15 |
+| 4.5 | 24.11.2022 | Formulare optisch überarbeiten | Joel | 45 | 15 |
+| 4.6 | 24.11.2022 | Code Datei (Produkt) in die DB einbinden | Joel | 45 | 45 |
+| 4.7 | 24.11.2022 | Error Seite erstellen | Melanie | 45 | 30 |
+| 4.8 | 24.11.2022 | Error Seite implementieren | Melanie | 22 | 5 |
+| 4.9 | ~~24.11.2022~~ 1.12.2022 | Bestellbestätigungsemail anpassen + Fileattachment hinzufügen | Melanie / Joel | ~~45~~ 60+45 | 60+45 |
+| 4.10 | ~~24.11.2022~~ 1.12.2022 | Aktuelles Datum anzeigen bei Kommentaren | Delia | 45 | 40+ |
+| 4.11 | ~~24.11.2022~~ 1.12.2022 | Funktionalität Kommentare senden | Delia | 60 | 155+ |
+| 4.12 | ~~24.11.2022~~ 1.12.2022 | Funktionalität mehrere Kommentare anzeigen | Delia | 45 | 15+ |
+| 4.13 | 24.11.2022 | Profil login/logout | Melanie | 60 | 30 |
+| 4.13 | 24.11.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 | 25 |
+| 5 ||||||
+| 5.1 | 1.12.2022 | Wöchentliches HDKOM\* | Alle | 22 | 20 |
+| 5.2 | 1.12.2022 | Verifikation implementieren à Datenbank / Java Code | Joel | 60 | 30 |
+| 5.3 | 1.12.2022 | Verifikation implementieren à Zugriffsverweigerungen | Joel | 60 | 30+ |
+| 5.4 | 1.12.2022 | CSS verbessern | Joel | 45 | 30+ |
+| 5.5 | 1.12.2022 | Informierung über Online-Shop-Bezahlung (API?) | Melanie | 30 | 15 |
+| 5.6 | 1.12.2022 | Informieren ~~und Umsetzung~~Layout-Templates Springboot | Melanie | 45 | 45 |
+| 5.7 | 1.12.2022 | Hilfestellung Kommentare Delia | Melanie | 45 | 30+ |
+| 5.8 | 1.12.2022 | Funktionalität Kommentare senden | Delia | 90 | 90+ |
+| 5.9 | 1.12.2022 | Kommentare von anderen Benutzern werden angezeigt | Delia | 90 | 90+ |
+| 5.10 | 1.12.2022 | Datum, wann der Kommentar gepostet wurde, wird beim Kommentar angezeigt | Delia | 45 | 20+ |
+| 5.11 | 1.12.2022 | Preisanzeige anpassen (5.50 statt 5.5) | Melanie | 25 | 25 |
+| 5.12 | 1.12.2022 | Dokumentation nachführen und mit dem Projekt auf GitHub pushen | Alle | 22 | 12 |
 
 **\*HDKOM** = **H** ead **D** eveloper **K** ick- **O** ff **M** eeting (Zweck: Besprechung des Projektstands und den Plänen für diese Woche)
 _alternativ__:_ _HDMI = Head Developer_ _Management_ _Interchange_
@@ -140,24 +157,23 @@ _alternativ__:_ _HDMI = Head Developer_ _Management_ _Interchange_
 
 ### 2.2 Milestones
 
-| Datum | Ziel |
-|---|---|
+| Datum | Milestone |
+| --- | --- |
 | 03.11.2022 | IPE abschliessen |
-| 10.11.2022 | Projekt läuft auf allen Notebooks der Gruppenmitglieder |
-| 17.11.2022 | ~~Webpage ist gehostet~~ |
-| 01.12.2022 | Kommentierbereich funktioniert |
+| 10.11.2022 | Projekt läuft auf allen Notebooks der Gruppenmitglieder
+| ~~17.11.2022~~ | Webpage ist gehostet |
+| ~~01.12.2022~~ | Kommentierbereich funktioniert |
 | 08.12.2022 | Check-Out funktioniert |
-| 08.12.2022 | Webpage ist gehostet |
 
-## 3. Entscheiden
+## 3 Entscheiden
 
-##### Wie wird die Password Policy gestaltet?
+Wie wird die Password Policy gestaltet?
 Die Passwörter sollen mindestens 8 Zeichen beinhalten, darunter mindestens eine Zahl und mindestens einen Buchstaben. Mindestens ein Buchstabe muss grossgeschrieben werden. Leerzeichen im Passwort sind nicht erlaubt.
 
-##### Wie stellen wir den Code auf der Item Page dar?
+Wie stellen wir den Code auf der Item Page dar?
 Da wir den Code nicht als Bild darstellen können, werden wir einen Screenshot eines Codes überall als Filler auf die Items-Pages klatschen und in der Shopübersicht sind die Bilder einfach das Logo unseres Projekts.
 
-##### Welche Farben wollen wir benutzen?
+Welche Farben wollen wir benutzen?
 Wir wollen unsere Website ähnlich wie Programmiercode in einer IDE gestalten. Der Hintergrund soll grau/schwarz sein, die Schrift weiss. Es gibt einige farbige Akzente, die in Blautönen gehalten sind, wie unser Logo. Folgendes sind die gewählten Farben mit Hex Code:
 
 | **Farbe** | **Verwendung** | **Hex Code** |
@@ -169,35 +185,38 @@ Wir wollen unsere Website ähnlich wie Programmiercode in einer IDE gestalten. D
 | Blauer Akzent 2 | Akzente für wichtige Abschnitte | #6495ED |
 | Blauer Akzent 3 | Akzente für Navbar und Suche | #0047AB |
 
-## 4. Realisieren
+## 4 Realisieren
 
-## 5. Kontrollieren
+~~Die Datenbank wird kostenlos auf AWS via cockroachlabs gehostet.~~
+~~SQL-User: chellerassle Passwort: 4UludCxLOxjr2hvFTXm24g~~
+
+## 5 Kontrollieren
 
 Wir testen nur die Anforderungen, die erfüllt wurden und nicht zur Kategorie «_Rahmenbedingungen_» zählen:
 
 | **Nummer** | **Beschreibung** | **Status** |
 | --- | --- | --- |
 | 1 | Produkte im Warenkorb können entfernt werden | Erfüllt |
-| 2 | Um ins Check-out zu gelangen muss man eingeloggt sein. | In Bearbeitung |
+| 2 | Um ins Check-out zu gelangen muss man eingeloggt sein. | Erfüllt |
 | 3 | Ein Benutzer kann sich mit Namen, E-Mail und Passwort registrieren. | Erfüllt |
 | 4 | Ein registrierter Benutzer kann sich mit E-Mail und Passwort anmelden. | Erfüllt |
-| 5 | Alle Eingaben werden auf Gefahren überprüft. | In Bearbeitung |
+| 5 | Alle Eingaben werden auf Gefahren überprüft. | Erfüllt |
 | 6 | Es gibt eine Password Policy. | Erfüllt |
-| 7 | Die E-Mail wird validiert. | In Bearbeitung |
-| 8 | Es gibt eine E-Mail-Verifikation. | Noch nicht erfüllt |
-| 9 | Um etwas zu kaufen, muss man verifiziert sein. | Noch nicht erfüllt |
-| 10 | Die Adresseingaben im ersten Check-Out eines neu registrierten Benutzers werden in der Datenbank gespeichert. | In Bearbeitung |
-| 11 | Die Adresseingaben im Check-Out werden automatisch befüllt, wenn die Daten in der Datenbank vorhanden sind. | In Bearbeitung |
-| 12 | Der Benutzer kann online bezahlen. | Noch nicht erfüllt |
-| 13 | Die versendete E-Mail enthält den Code als Datei im Anhang. | Noch nicht erfüllt |
-| 14 | Es gibt ein Kommentarbereich auf der Produktseite. | Erfüllt |
+| 7 | Die E-Mail wird validiert. | Erfüllt |
+| 8 | Es gibt eine E-Mail-Verifikation. | In Bearbeitung |
+| 9 | Um etwas zu kaufen, muss man verifiziert sein. | In Bearbeitung |
+| 10 | Die Adresseingaben im ersten Check-Out eines neu registrierten Benutzers werden in der Datenbank gespeichert. | Erfüllt |
+| 11 | Die Adresseingaben im Check-Out werden automatisch befüllt, wenn die Daten in der Datenbank vorhanden sind. | Erfüllt |
+| 12 | Der Benutzer kann online bezahlen. | Nicht erfüllt |
+| 13 | Die versendete E-Mail enthält den Code als Datei im Anhang. | Erfüllt |
+| 14 | Es gibt ein Kommentarbereich auf der Produktseite. | In Bearbeitung |
 | 15 | Allen Benutzern werden die Kommentare von anderen Benutzern angezeigt. | In Bearbeitung |
-| 16 | Nur eingeloggte Benutzer können Kommentare schreiben. | Noch nicht erfüllt |
+| 16 | Nur eingeloggte Benutzer können Kommentare schreiben. | In Bearbeitung |
 | 17 | OneDrive wird als Speicherort verwendet. | Erfüllt |
 | 18 | Jeden Halbtag wird das Projekt und die Dokumentation Auf GitHub gepusht. | In Bearbeitung |
 | 19 | Die Webapplikation wird gehostet. | Noch nicht erfüllt |
-| 20 | Die Datenbank für die Webapplikation wird online gehostet, so dass alle Mitentwickler damit arbeiten können. | Noch nicht erfüllt|
-| 21 | Das Projekt muss bis am 15.12.2022 fertig sein. | Noch nicht erfüllt |
+| 20 | Die Datenbank für die Webapplikation wird online gehostet, so dass alle Mitentwickler damit arbeiten können. | Nicht erfüllt |
+| 21 | Das Projekt muss bis am 15.12.2022 fertig sein. | In Bearbeitung |
 
 ### 5.1 Testfälle
 
@@ -213,6 +232,6 @@ Wir testen nur die Anforderungen, die erfüllt wurden und nicht zur Kategorie «
 
 ### 5.3 Testfazit
 
-## 6. Auswerten
+## 6 Auswerten
 
 - _Siehe_ _Portfolios_
