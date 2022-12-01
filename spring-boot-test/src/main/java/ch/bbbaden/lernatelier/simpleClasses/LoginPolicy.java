@@ -6,8 +6,7 @@ import java.util.regex.Pattern;
 public class LoginPolicy {
     private String regexPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
 
-    public boolean loginPolicy(String firstname, String lastname, String email, String password) {
-
+    public boolean loginPolicy(String firstname, String lastname, String email, String password) throws Exception{
         if (!noWhiteSpaces(firstname) && !noWhiteSpaces(lastname) && !noWhiteSpaces(email) && !noWhiteSpaces(password)) {
             if (containsNumber(password)) {
                 if (containsLettersOnly(firstname) && containsLettersOnly(lastname)) {
@@ -17,11 +16,23 @@ public class LoginPolicy {
                                 if (emailPolicy(email)) {
                                     return true;
                                 }
+                            }else{
+                                throw new Exception("No lower case in password");
                             }
+                        }else{
+                            throw new Exception("No upper case in password");
                         }
+                    }else{
+                        throw new Exception("No letter in password");
                     }
+                }else{
+                    throw new Exception("Not only letters in firstname and lastname");
                 }
+            }else{
+                throw new Exception("No number in password");
             }
+        }else{
+            throw new Exception("Whitespaces");
         }
         return false;
     }

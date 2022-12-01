@@ -59,10 +59,10 @@
                                 <h4 th:text="${item.name}"/>
                             </div>
                             <div class="col-2">
-                                <a class="remove-link left" th:href="@{/remove(productName=${item.name})}">x</a>
+                                <a class="remove-link text-right" th:href="@{/remove(productName=${item.name})}">x</a>
                             </div>
                         </div>
-                        <p class="left" th:text="'CHF ' + ${item.price}"/>
+                        <p class="text-right" th:text="'CHF ' + ${item.priceAsString}"/>
                     </li>
                 </ul>
             </div>

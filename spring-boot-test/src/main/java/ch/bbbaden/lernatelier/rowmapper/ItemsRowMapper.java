@@ -18,6 +18,9 @@ public class ItemsRowMapper implements RowMapper<Item> {
         item.setPrice(rs.getFloat("price"));
         item.setCode(rs.getString("code"));
         item.setLength(rs.getString("length"));
+        item.setFileType(rs.getString("fileType"));
+        item.setCodeText(rs.getString("codeText"));
+        item.setPriceAsString(rs.getFloat("price"));
         return item;
     }
 }

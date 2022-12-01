@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Name("testController")
@@ -28,10 +29,15 @@ public class TestController {
 
     @GetMapping("/")
     public String home(Model model) {
+        String path = "/login";
         List<Item> items = jdbcTemplate.getAllProducts();
         model.addAttribute("items", items);
         model.addAttribute("searchResult", "");
         model.addAttribute("isHidden", true);
+        if(user != null){
+            path = "/logout";
+        }
+        model.addAttribute("path", path);
         currentlyOpenedItem = null;
         return "index";
     }
@@ -48,7 +54,11 @@ public class TestController {
     public String loginPost(@ModelAttribute User user, Model model) {
         boolean wasLoginSuccessful = false;
         if (user.getPassword().equals(user.getRepeatPassword())) {
-            wasLoginSuccessful = jdbcTemplate.registerNewUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getRepeatPassword());
+            try {
+                wasLoginSuccessful = jdbcTemplate.registerNewUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getRepeatPassword());
+            } catch (Exception e){
+                System.err.println(e.getMessage());
+            }
         } else {
             wasLoginSuccessful = jdbcTemplate.login(user.getEmail(), user.getPassword());
             user = jdbcTemplate.getLoggedInUser(user.getEmail(), user.getPassword());
@@ -64,20 +74,37 @@ public class TestController {
         }
     }
 
+    @GetMapping("/logout")
+    public String showLogout(Model model){
+        return "logout";
+    }
+
+    @PostMapping("/logout")
+    public String logout(Model model){
+        user = null;
+        return "redirect:/";
+    }
+
     @GetMapping("/product-page")
     public String productPage(@RequestParam(name = "productId", defaultValue = "null") String productId, Model model) {
         if (productId.equals("null")) {
+            return "error";
         } else {
+            String path = "/login";
             Item item = jdbcTemplate.getItemFromId(Integer.valueOf(productId));
             currentlyOpenedItem = item;
             model.addAttribute("name", item.getName());
             model.addAttribute("description", item.getDescription());
-            model.addAttribute("price", item.getPrice());
+            model.addAttribute("price", item.getPriceAsString());
             model.addAttribute("code", item.getCode());
             model.addAttribute("length", item.getLength());
             model.addAttribute("id", item.getId());
             model.addAttribute("comments",jdbcTemplate.getAllCommentsForAProduct(item.getId()));
             model.addAttribute("numberOfComments", jdbcTemplate.getAllCommentsForAProduct(item.getId()).size());
+            if(user != null){
+                path = "/logout";
+            }
+            model.addAttribute("path", path);
         }
 
         return "product-page";
@@ -101,7 +128,12 @@ public class TestController {
     @GetMapping("/cart")
     public String displayCart(Model model) {
         currentlyOpenedItem = null;
+        String path = "/login";
         List<Item> itemsInCart = cart.getItemsSelected();
+        if(user != null){
+            path = "/logout";
+        }
+        model.addAttribute("path", path);
         model.addAttribute("cart", itemsInCart);
         model.addAttribute("total", cart.getTotal());
 
@@ -120,7 +152,7 @@ public class TestController {
 
     @GetMapping("/check-out")
     public String checkOut(Model model) {
-        if (user == null) {
+        if (user == null /*|| user.getIsVerified() != 1*/) {
             returnToCheckOut = true;
             return "redirect:/login";
         }
@@ -135,7 +167,7 @@ public class TestController {
 
     @PostMapping("/check-out")
     public String ordered(@ModelAttribute Order order, Model model) {
-        if (user == null) {
+        if (user == null || user.getIsVerified() != 1) {
             return "redirect:/login";
         }
         if (order.isChecked()) {
@@ -145,13 +177,17 @@ public class TestController {
             user.setAddress(order.getAddress());
             user.setLastname(order.getLastname());
             user.setFirstname(order.getFirstname());
-            user.setEmail(order.getEmail());
-            user.updateDatabase();
+            jdbcTemplate.updateUser(user);
 
             //Send Email
             String mailOfReceiver = order.getEmail();
             Mail mail = new Mail();
-            mail.sendMail(mailOfReceiver, order, cart);
+            ArrayList<String> attachments = new ArrayList<>();
+            for(Item item : cart.getItemsSelected()){
+                attachments.add(item.getName());
+            }
+            mail.sendMail(mailOfReceiver, order, cart, jdbcTemplate.getAttachments(attachments));
+            cart = new Cart();
             return "redirect:/";
         } else {
             return "check-out";
@@ -164,11 +200,29 @@ public class TestController {
             List<Item> items = jdbcTemplate.getItemsFromSearch(keyword);
             model.addAttribute("items", items);
             model.addAttribute("isHidden", false);
-            model.addAttribute("searchResult", "Results for &quot;" + keyword + "&quot;");
-            if (items.size() == 0){
-                model.addAttribute("searchResult", "No results for &quot;" + keyword + "&quot;");
+            model.addAttribute("searchResult", "Results for \"" + keyword + "\";");
+            if (items == null){
+                model.addAttribute("searchResult", "No results for \"" + keyword + "\"");
             }
         }
         return "index";
+    }
+
+    @GetMapping("/verfication")
+    public String verification(){
+        //Needs session  id
+        boolean sessionid = false;
+        if (!sessionid){ // If user doesn't match with request
+            return "index"; // Has to redirect to a retry page
+        }else{
+            jdbcTemplate.verifyUser(user);
+            return "index";
+        }
+    }
+
+
+    @GetMapping("/error")
+    public String error(Model model){
+        return "error";
     }
 }

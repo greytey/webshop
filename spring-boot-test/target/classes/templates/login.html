@@ -18,10 +18,14 @@
 <div id="main-menu">
     <div class="row">
         <div class="col-auto">
-            <img class="logo" th:src="@{/img/codelinewayLogoOnlyClear.png}" alt="Logo">
+            <a th:href="@{/}">
+                <img class="logo" th:src="@{/img/codelinewayLogoOnlyClear.png}" alt="Logo">
+            </a>
         </div>
         <div class="col">
-            <h1>codelineway</h1>
+            <a th:href="@{/}">
+                <h1>codelineway</h1>
+            </a>
         </div>
     </div>
     <hr>
@@ -58,7 +62,7 @@
                     <button type="submit" value="Submit" id="login-btn" class="btn btn-block light-blue-btn">Register</button>
                 </div>
             </form>
-            <div class="centred m-5">
+            <div class="text-center">
                 <p id="switch-text">Already Registered?<br>
                 </p>
                 <button id="switch-btn" class="btn light-blue-btn">Go to Login</button>

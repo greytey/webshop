@@ -15,6 +15,7 @@ public class User {
     private String city = "";
     private String email;
     private String password;
+    private int isVerified;
 
 
     private String repeatPassword;
@@ -93,8 +94,11 @@ public class User {
         this.repeatPassword = repeatPassword;
     }
 
-    public boolean updateDatabase(){
-        jdbcTemplate.updateUser(this);
-        return false;
+    public int getIsVerified(){
+        return isVerified;
+    }
+
+    public void setIsVerified(int isVerified){
+        this.isVerified = isVerified;
     }
 }

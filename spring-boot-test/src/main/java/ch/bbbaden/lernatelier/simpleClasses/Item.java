@@ -1,33 +1,30 @@
 package ch.bbbaden.lernatelier.simpleClasses;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 public class Item {
 
     private int id;
     private String name;
     private String description;
     private float price;
+    private String priceAsString;
     private String code;
     private String length;
+    private String fileType;
+    private String codeText;
 
     public Item() {
 
     }
 
-    public Item(String name, String description, float price, String code, String length) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.code = code;
-        this.length = length;
+    public String getFileType() {
+        return fileType;
     }
 
-    public Item(String name, String description, float price, String code, String length, int id) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.code = code;
-        this.length = length;
-        this.id = id;
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 
     public String getName() {
@@ -76,6 +73,23 @@ public class Item {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getPriceAsString() {
+        return priceAsString;
+    }
+
+    public void setPriceAsString(float price) {
+        this.priceAsString = new DecimalFormat("#0.00").format(price);
+
+    }
+
+    public String getCodeText() {
+        return codeText;
+    }
+
+    public void setCodeText(String codeText) {
+        this.codeText = codeText;
     }
 
     @Override

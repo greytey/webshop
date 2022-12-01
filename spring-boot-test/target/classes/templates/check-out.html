@@ -18,10 +18,14 @@
 <div id="main-menu">
     <div class="row">
         <div class="col-auto">
-            <img class="logo" th:src="@{/img/codelinewayLogoOnlyClear.png}" alt="Logo">
+            <a th:href="@{/}">
+                <img class="logo" th:src="@{/img/codelinewayLogoOnlyClear.png}" alt="Logo">
+            </a>
         </div>
         <div class="col">
-            <h1>codelineway</h1>
+            <a th:href="@{/}">
+                <h1>codelineway</h1>
+            </a>
         </div>
         <div class="col-auto">
             <form class="form-inline my-2 my-lg-0" th:action="@{/search}" th:value="${keyword}">
@@ -29,50 +33,85 @@
                 <button class="btn light-blue-btn" type="submit">Search</button>
             </form>
         </div>
-        <div class="col-auto">
+        <div class="col-auto ">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                  class="bi bi-person bootstrap-icons light-blue" viewBox="0 0 16 16">
-                <path
-                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
             </svg>
+            <div class="tooltip">
+                <span class="tooltip-text">Hier könnte Ihre Werbung stehen</span>
+            </div>
         </div>
         <div class="col-auto">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                 class="bi bi-bag bootstrap-icons light-blue" viewBox="0 0 16 16">
-                <path
-                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-            </svg>
+            <a th:href="@{/cart}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-bag bootstrap-icons light-blue" viewBox="0 0 16 16">
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                </svg>
+                <div class="tooltip">
+                    <span class="tooltip-text">Hier könnte Ihr Warenkorb stehen</span>
+                </div>
+            </a>
         </div>
     </div>
+    <hr>
 </div>
+
 <div class="container">
-    <div class="row">
-        <div class="col-8">
+    <div class="row justify-content-center">
+        <div class="col-auto">
             <form action="#" th:action="@{/check-out}" th:object="${order}" class="checkout-form" method="post">
-                <h2>Address</h2>
-                <label for="lname" id="lnamelabel" class="halfsize">Name</label>
-                <label for="fname" class="halfsize">First Name</label><br>
-                <input type="text" th:field="*{lastname}" th:value="*{lastname}" id="lname" name="lname" class="halfsize">
-                <input type="text" th:field="*{firstname}" th:value="*{firstname}" id="fname" name="fname" class="halfsize"><br>
-                <label for="address" class="fullsize">Street and House-Nr.</label><br>
-                <input type="text" th:field="*{address}" th:value="*{address}" id="address" name="address" class="fullsize"><br/>
-                <label for="plz" id="plzlabel">ZIP Code</label>
-                <label for="city" class="city">City</label><br>
-                <input type="text" th:field="*{zip}" th:value="*{zip}" id="plz" name="plz">
-                <input type="text" th:field="*{city}" th:value="*{city}" id="city" name="city"><br/>
-                <label for="email" class="fullsize">Email</label><br>
-                <input type="text" th:field="*{email}" th:value="*{email}" id="email" name="email" class="fullsize"><br/>
-                <div class="broken-info">
-                    <p><b>An invoice is sent with the order. There is no other option than to pay by invoice.</b></p>
-                    <br>
+                <h2 id="login-title-lbl">Address</h2>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="firstname">Firstname</label>
+                        <input type="text" th:field="*{firstname}" th:value="*{firstname}" id="firstname"
+                               name="firstname" class="form-control" placeholder="Firstname" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="lastname">Lastname</label>
+                        <input type="text" th:field="*{lastname}" th:value="*{lastname}" id="lastname" name="lastname"
+                               class="form-control" placeholder="Lastname" required>
+                    </div>
                 </div>
-                <div class="broken-info form-check">
-                    <input th:field="*{checked}" type="checkbox" id="checkboxNeeded" name="checkboxNeeded"
-                           class="form-check-input" required>
-                    <label for="checkboxNeeded" class="form-check-label">I agree to pay the invoice sent to me with the
-                        products I will be ordering by clicking on "order".</label>
+                <div class="form-group">
+                    <label for="address">Street and House-Nr.</label>
+                    <input type="text" th:field="*{address}" th:value="*{address}" id="address" name="address"
+                           class="form-control" placeholder="Street and House-Nr" required>
                 </div>
-                <button type="submit" class="btn light-blue-btn float-right" id="orderButton">Order</button>
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="plz">ZIP Code</label>
+                        <input type="text" th:field="*{zip}" th:value="*{zip}" id="plz" name="plz" class="form-control"
+                               placeholder="ZIP Code" required>
+                    </div>
+                    <div class="form-group col">
+                        <label for="city">City</label>
+                        <input type="text" th:field="*{city}" th:value="*{city}" id="city" name="city" class="form-control"
+                               placeholder="City" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="text" th:field="*{email}" th:value="*{email}" id="email" name="email" class="form-control"
+                           placeholder="Email Address" required>
+                </div>
+                <div>
+                    <p><b>An invoice is sent with the order.<br>
+                        There is no other option than to pay by invoice.</b>
+                    </p>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input th:field="*{checked}" type="checkbox" id="checkbox" name="checkbox"
+                               class="form-check-input" required>
+                        <label for="checkbox" class="form-check-label">I agree to pay the invoice sent
+                            to me with the products I will be ordering by clicking on "order". <br>I also agree that I
+                            am fine with my  data being saved in codelineway's database.
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn light-blue-btn" id="orderButton">Order</button>
             </form>
         </div>
         <div class="col-4">
@@ -81,11 +120,11 @@
                 <ul class="cart-side" th:each="item : ${cart}">
                     <li>
                         <h4 th:text="${item.name}"/>
-                        <p class="left" th:text="'CHF ' + ${item.price}"/>
+                        <p class="text-right" th:text="'CHF ' + ${item.priceAsString}"/>
                     </li>
                 </ul>
             </div>
-            <h4 class="text-right" th:text="'CHF' + ${total}"/>
+            <h4 class="text-right" th:text="'CHF ' + ${total}"/>
         </div>
     </div>
 </div>

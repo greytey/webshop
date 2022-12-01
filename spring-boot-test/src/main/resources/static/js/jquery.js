@@ -27,4 +27,13 @@ $(document).ready(function () {
     $("#comment-area").on("keyup input", function(){
         $(this).css('height','auto').css('height',this.scrollHeight+(this.offsetHeight - this.clientHeight));
     });
+
+
+
+    var buttons = document.querySelector('.submit');
+
+    $("#comment-area").onfocus = function(){
+        buttons.style.display = 'block';
+    }
+
 });
