@@ -3,7 +3,7 @@
 By Delia Reho, Melanie Völlmin & Joel Jütte
 
 
-![Logo](codelinewayOnlyLogoClear.png)
+![Logo](codelinewayLogoOnlyClear.png)
 
 | **Datum** | **Version** | **Änderung** | **Autor** |
 | --- | --- | --- | --- |
