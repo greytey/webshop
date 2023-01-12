@@ -39,9 +39,9 @@ public class Cart {
         return formatter.format(total);
     }
 
-    public String getMailText(Order order){
+    public String getMailText(Order order) {
         String itemText = "";
-        for(Item item : itemsSelected){
+        for (Item item : itemsSelected) {
             itemText += "<tr>\n<td>" + item.getName() + "</td>\n<td style=\"text-align:end;\">CHF " + item.getPriceAsString() + "</td>\n</tr>\n";
         }
         return "<!DOCTYPE html>\n" +
@@ -57,11 +57,10 @@ public class Cart {
                 "<p>Hier nochmals eine Übersicht:</p>\n<table>\n" + itemText +
                 "<tr>\n<td>Total</td>\n<td style=\"text-align:end;\">CHF " + getTotal() + "</td>\n</tr>\n" +
                 "</table>\n<p>Die Rechnung wird an folgende Adresse geschickt:</p>\n" +
-                "<p>" + order.getAddress() + ",\n<br>" + order.getZip() + " " + order.getCity() + "\n</p>"+
+                "<p>" + order.getAddress() + ",\n<br>" + order.getZip() + " " + order.getCity() + "\n</p>" +
                 "<p>Die Codedatei(en) findest du im Anhang. Viel Spass damit!<br>Wir würden uns freuen," +
                 " wenn du uns mal wieder besuchst. Machs gut!</p>\n" +
                 "<p>Mit freundlichen Grüssen,<br> dein codelineway-Team</p>\n" +
                 "</div>\n</body>\n</html>";
     }
-
 }

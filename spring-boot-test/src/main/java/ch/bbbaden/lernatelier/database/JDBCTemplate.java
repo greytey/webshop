@@ -1,9 +1,9 @@
 package ch.bbbaden.lernatelier.database;
 
 import ch.bbbaden.lernatelier.rowmapper.CommentRowMapper;
+import ch.bbbaden.lernatelier.rowmapper.ItemsRowMapper;
 import ch.bbbaden.lernatelier.rowmapper.UserRowMapper;
 import ch.bbbaden.lernatelier.simpleClasses.*;
-import ch.bbbaden.lernatelier.rowmapper.ItemsRowMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +13,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
+import org.springframework.jdbc.core.PreparedStatementSetter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.security.SecureRandom;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 @SpringBootApplication
@@ -31,6 +34,9 @@ public class JDBCTemplate implements CommandLineRunner {
     private LoginPolicy loginPolicy = new LoginPolicy();
 
     private List<Comment> comments;
+    private Random rnd = new Random();
+
+    private BCryptPasswordEncoder hashAndSalt = new BCryptPasswordEncoder(10, new SecureRandom());
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -41,7 +47,7 @@ public class JDBCTemplate implements CommandLineRunner {
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS item(" +
                 "id SERIAL, productname VARCHAR(255), description BLOB, price FLOAT, code VARCHAR(255), fileType VARCHAR(100), codeText BLOB, length VARCHAR(255));");
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS user(" +
-                "id SERIAL, firstname VARCHAR(100), lastname VARCHAR(100), email VARCHAR(100), password VARCHAR(100), address VARCHAR(255), zip VARCHAR(100), city VARCHAR(100), isVerified BIT);");
+                "id SERIAL, firstname VARCHAR(100), lastname VARCHAR(100), email VARCHAR(100), password VARCHAR(100), address VARCHAR(255), zip VARCHAR(100), city VARCHAR(100),verificationCode INT(8), isVerified BIT);");
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS comment(" +
                 "id SERIAL, displayname VARCHAR(100), createdate VARCHAR(100), commenttext BLOB, productid INT);");
     }
@@ -68,6 +74,22 @@ public class JDBCTemplate implements CommandLineRunner {
         return commentsForAProduct;
     }
 
+    public boolean addComment(Comment comment){
+        String query = "INSERT INTO comment (displayname, createdate, commenttext, productid) VALUES(?,?,?,?);";
+        return jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
+            @Override
+            public Boolean doInPreparedStatement(PreparedStatement ps)
+                    throws SQLException, DataAccessException {
+                ps.setString(1, comment.getName());
+                ps.setString(2, comment.getDate());
+                ps.setString(3, comment.getCommenttext());
+                ps.setInt(4, comment.getProduct());
+                getAllProducts();
+                return ps.execute();
+            }
+        });
+    }
+
     public Item getItemFromId(int id) {
         for (Item item : itemsList) {
             if (item.getId() == id) {
@@ -79,7 +101,15 @@ public class JDBCTemplate implements CommandLineRunner {
 
     public List<Item> getItemsFromSearch(String search) {
         try {
-            searchedItemsList = jdbcTemplate.query("SELECT * FROM item WHERE productname LIKE \"%" + search + "%\"", new ItemsRowMapper());
+            String query = "SELECT * FROM item WHERE productname LIKE %?%;";
+            List <Item> itemsFromSearch = jdbcTemplate.query(
+                    query, new PreparedStatementSetter() {
+                        public void setValues(PreparedStatement preparedStatement) throws SQLException {
+                            preparedStatement.setString(1, search);
+                        }
+                    },
+                    new ItemsRowMapper());
+            return itemsFromSearch;
         } catch (Exception e) {
             searchedItemsList = null;
         }
@@ -92,19 +122,22 @@ public class JDBCTemplate implements CommandLineRunner {
             if (!doesUserExist(email)) {
                 try {
                     if (loginPolicy.loginPolicy(firstname, lastname, email, password)) {
-                        String query = "INSERT INTO user (firstname, lastname, email, password) VALUES(?,?,?,? );";
-                        return jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
+                        String query = "INSERT INTO user (firstname, lastname, email, password, verificationCode) VALUES(?,?,?,?,?);";
+                        int random = 10000000 + rnd.nextInt(90000000);
+                        jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
                             @Override
                             public Boolean doInPreparedStatement(PreparedStatement ps)
                                     throws SQLException, DataAccessException {
                                 ps.setString(1, firstname);
                                 ps.setString(2, lastname);
                                 ps.setString(3, email);
-                                ps.setString(4, password);
+                                ps.setString(4, hashAndSalt.encode(password));
+                                ps.setInt(5, random);
                                 getUsers();
                                 return ps.execute();
                             }
                         });
+                        return true;
                     }
                 } catch (Exception e) {
                     throw new Exception("Login policy failed: " + e.getMessage());
@@ -129,7 +162,7 @@ public class JDBCTemplate implements CommandLineRunner {
 
     private boolean checkLogin(String email, String password) {
         for (User user : users) {
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+            if (user.getEmail().equals(email) && hashAndSalt.matches(password, user.getPassword())) {
                 return true;
             }
         }
@@ -146,8 +179,20 @@ public class JDBCTemplate implements CommandLineRunner {
     }
 
     public User getLoggedInUser(String email, String password) {
-        List<User> tempUsers = jdbcTemplate.query("SELECT * FROM user WHERE email = \"" + email + "\" AND password = \"" + password + "\";", new UserRowMapper());
-        return tempUsers.get(0);
+        String query = "SELECT * FROM user WHERE email = ?;";
+        List<User> tempUsers = jdbcTemplate.query(
+                query, new PreparedStatementSetter() {
+                    public void setValues(PreparedStatement preparedStatement) throws SQLException {
+                        preparedStatement.setString(1, email);
+                    }
+                },
+                new UserRowMapper());
+        for(User user : tempUsers){
+            if(hashAndSalt.matches(password, user.getPassword())){
+                return user;
+            }
+        }
+        return null;
     }
 
     private List<User> getUsers() {
@@ -156,7 +201,7 @@ public class JDBCTemplate implements CommandLineRunner {
     }
 
     public boolean updateUser(User user) {
-        final String query = "UPDATE user SET firstname = ?, lastname = ?, address = ?, zip = ?, city = ? WHERE email = ? AND password = ?";
+        final String query = "UPDATE user SET firstname = ?, lastname = ?, address = ?, zip = ?, city = ? WHERE email = ? AND password = ?;";
         return jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
             @Override
             public Boolean doInPreparedStatement(PreparedStatement ps)
@@ -189,7 +234,7 @@ public class JDBCTemplate implements CommandLineRunner {
     public boolean verifyUser(User user){
         if (user.getIsVerified() == 0){
             user.setIsVerified(1);
-            final String query = "UPDATE user SET isVerified = ? WHERE email = ? AND password = ?";
+            final String query = "UPDATE user SET isVerified = ? WHERE email = ? AND password = ?;";
             return jdbcTemplate.execute(query, new PreparedStatementCallback<Boolean>() {
                 @Override
                 public Boolean doInPreparedStatement(PreparedStatement ps)

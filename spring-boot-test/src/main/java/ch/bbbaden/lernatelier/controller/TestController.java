@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Name("testController")
@@ -24,8 +26,10 @@ public class TestController {
     private User user = null;
 
     private boolean returnToCheckOut = false;
+    private boolean returnToVerification = false;
     private Cart cart = new Cart();
     private Item currentlyOpenedItem = null;
+    private  Mail mail = new Mail();
 
     @GetMapping("/")
     public String home(Model model) {
@@ -56,6 +60,9 @@ public class TestController {
         if (user.getPassword().equals(user.getRepeatPassword())) {
             try {
                 wasLoginSuccessful = jdbcTemplate.registerNewUser(user.getFirstname(), user.getLastname(), user.getEmail(), user.getPassword(), user.getRepeatPassword());
+                if (wasLoginSuccessful){
+                    mail.sendVerificationMail(user);
+                }
             } catch (Exception e){
                 System.err.println(e.getMessage());
             }
@@ -66,8 +73,16 @@ public class TestController {
         this.user = user;
 
         if (returnToCheckOut && wasLoginSuccessful) {
+            returnToCheckOut = false;
             return "redirect:/check-out";
-        } else if (!returnToCheckOut && wasLoginSuccessful) {
+        }
+
+        if (returnToVerification && wasLoginSuccessful) {
+            returnToVerification = false;
+            return "redirect:/verification";
+        }
+
+         if (wasLoginSuccessful) {
             return "redirect:/";
         } else{
             return "login";
@@ -100,6 +115,7 @@ public class TestController {
             model.addAttribute("length", item.getLength());
             model.addAttribute("id", item.getId());
             model.addAttribute("comments",jdbcTemplate.getAllCommentsForAProduct(item.getId()));
+            model.addAttribute("comment", new Comment());
             model.addAttribute("numberOfComments", jdbcTemplate.getAllCommentsForAProduct(item.getId()).size());
             if(user != null){
                 path = "/logout";
@@ -150,9 +166,22 @@ public class TestController {
         return "cart";
     }
 
+     @PostMapping("/product-page")
+     public String addComment(@RequestParam(name = "id", defaultValue = "null") int id, @ModelAttribute Comment comment, Model model){
+        if(user != null){
+            comment.setProduct(id);
+            comment.setName(user.getFirstname());
+            comment.setDate(new Date().toString());
+            jdbcTemplate.addComment(comment);
+            return "redirect:/";
+        } else {
+            return "redirect:/login";
+        }
+     }
+
     @GetMapping("/check-out")
     public String checkOut(Model model) {
-        if (user == null /*|| user.getIsVerified() != 1*/) {
+        if (user == null || user.getIsVerified() != 1) {
             returnToCheckOut = true;
             return "redirect:/login";
         }
@@ -181,12 +210,11 @@ public class TestController {
 
             //Send Email
             String mailOfReceiver = order.getEmail();
-            Mail mail = new Mail();
             ArrayList<String> attachments = new ArrayList<>();
             for(Item item : cart.getItemsSelected()){
                 attachments.add(item.getName());
             }
-            mail.sendMail(mailOfReceiver, order, cart, jdbcTemplate.getAttachments(attachments));
+            mail.sendProductMail(mailOfReceiver, order, cart, jdbcTemplate.getAttachments(attachments));
             cart = new Cart();
             return "redirect:/";
         } else {
@@ -208,15 +236,19 @@ public class TestController {
         return "index";
     }
 
-    @GetMapping("/verfication")
-    public String verification(){
-        //Needs session  id
-        boolean sessionid = false;
-        if (!sessionid){ // If user doesn't match with request
-            return "index"; // Has to redirect to a retry page
-        }else{
+    @GetMapping("/verification")
+    public String verification(@RequestParam(name = "verificationCode") String verificationCode, RedirectAttributes redirectAttributes) {
+        if (user == null) {
+            returnToVerification = true;
+            return "redirect:/login";
+        }
+        if (user.getVerificationCode().equals(verificationCode)){
             jdbcTemplate.verifyUser(user);
+            redirectAttributes.addFlashAttribute("success", "Everything went just fine");
             return "index";
+        }else{
+            redirectAttributes.addFlashAttribute("failure", "The verification-code was not correct");
+            return "verify";
         }
     }
 

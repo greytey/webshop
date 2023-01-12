@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="icon" type="image/x-icon" th:href="@{/img/codelinewayLogoOnlyClear.png}">
+
     <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
     <title>Login - codelineway</title>
 </head>
@@ -40,23 +41,43 @@
                     <div class="form-group col">
                         <label for="firstname" id="firstname-label">Firstname</label>
                         <input th:field="*{firstname}" type="text" id="firstname" name="firstname" class="form-control" placeholder="Firstname" required="">
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">
+                            Please provide a valid firstname.
+                        </div>
                     </div>
                     <div class="form-group col">
                         <label for="lastname" id="lastname-label">Lastname</label>
                         <input th:field="*{lastname}" type="text" id="lastname" name="lastname" class="form-control" placeholder="Lastname" required="">
+                        <div class="valid-feedback"></div>
+                        <div class="invalid-feedback">
+                            Please provide a valid lastname.
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email" id="email-label">Email Address</label>
                     <input th:field="*{email}" type="email" id="email" name="email" class="form-control" placeholder="Email Address" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                        Please provide a valid email address.
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="password" id="password-label">Password</label>
                     <input th:field="*{password}" type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                        Please provide a valid password.
+                    </div>
                 </div>
                 <div id="repeat-password-div" class="form-group">
                     <label for="repeat-password" id="repeat-password-label">Repeat Password</label>
                     <input th:field="*{repeatPassword}" type="password" id="repeat-password" name="repeatPassword" class="form-control" placeholder="Repeat Password" required="">
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback">
+                        Please provide a valid password.
+                    </div>
                 </div>
                 <div class="form-group">
                     <button type="submit" value="Submit" id="login-btn" class="btn btn-block light-blue-btn">Register</button>

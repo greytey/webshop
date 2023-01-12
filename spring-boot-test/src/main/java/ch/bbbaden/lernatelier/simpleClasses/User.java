@@ -15,6 +15,7 @@ public class User {
     private String city = "";
     private String email;
     private String password;
+    private String verificationCode = "";
     private int isVerified;
 
 
@@ -94,6 +95,14 @@ public class User {
         this.repeatPassword = repeatPassword;
     }
 
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
+    }
+
     public int getIsVerified(){
         return isVerified;
     }
@@ -101,4 +110,5 @@ public class User {
     public void setIsVerified(int isVerified){
         this.isVerified = isVerified;
     }
+
 }

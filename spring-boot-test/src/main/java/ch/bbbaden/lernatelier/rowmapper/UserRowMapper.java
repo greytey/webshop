@@ -19,6 +19,7 @@ public class UserRowMapper implements RowMapper<User> {
         user.setAddress(rs.getString("address"));
         user.setZip(rs.getString("zip"));
         user.setCity(rs.getString("city"));
+        //user.setVerificationCode(rs.getString("verificationCode"));
         user.setIsVerified((rs.getInt("isVerified")));
         return user;
     }
